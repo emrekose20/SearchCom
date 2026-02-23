@@ -1,4 +1,4 @@
-# PROJE ADI
+# SearchCom
 
 > **Not:** Bu bölüm proje adı ile güncellenmelidir.
 
