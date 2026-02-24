@@ -1,6 +1,6 @@
 1. **İşletme Kaydı Oluşturma**
    - **API Metodu:** `POST /api/establishments`
-   - **Açıklama:** Sisteme henüz dahil edilmemiş yeni bir restoran, kafe veya işletmenin temel bilgilerini (isim, adres, kategori) veritabanına kaydeder. Bu işlem yönetici veya işletme sahibi yetkisiyle gerçekleştirilir.
+   - **Açıklama:** Sisteme henüz dahil edilmemiş yeni bir restoran, kafe veya işletmenin temel bilgilerini veritabanına kaydeder. Bu işlem yönetici veya işletme sahibi yetkisiyle gerçekleştirilir.
 
 2. **İşletme Listesini Görüntüleme**
    - **API Metodu:** `GET /api/establishments`
