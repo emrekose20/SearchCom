@@ -13,7 +13,7 @@
 >
 > 
 **Proje Kategorisi:** 
-> Projenin hangi alanda yapıldığını belirten bir kategori. Örnek: E-Ticaret, Sosyal Medya vb.
+> Konum Tabanlı Sosyal Uygulama
 
 **Referans Uygulama:** 
 > [Örnek Referans Uygulama](https://example.com)
