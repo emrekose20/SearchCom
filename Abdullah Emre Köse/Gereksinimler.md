@@ -29,3 +29,7 @@
 8. **Kullanıcı Hesabını Silme**
    - **API Metodu:** `DELETE /api/users/{id}`
    - **Açıklama:** Kullanıcının kendi isteği doğrultusunda hesabını pasif hale getirmesi veya tüm verileriyle birlikte sistemden kalıcı olarak silinmesi sürecini yönetir.
+
+9. **Yapay Zeka Destekli Akıllı Mekan Önerisi (Bonus)**
+   - **API Metodu:** `POST /api/ai/recommend`
+   - **Açıklama:** Kullanıcının geçmiş tercihlerini analiz ederek yapay zeka yardımıyla kişiselleştirilmiş mekan önerileri sunar.
