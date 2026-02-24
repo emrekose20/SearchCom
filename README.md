@@ -6,7 +6,7 @@
 
 ## Proje Hakkında
 
-![Ürün Tanıtım Görseli]SearchCom ürün tanıtım görseli.png
+![Ürün Tanıtım Görseli](SearchCom ürün tanıtım görseli.png)
 
 **Proje Tanımı:** 
 > SearchCom, kullanıcıların ziyaret ettikleri mekânları kolayca keşfetmelerini, puanlamalarını ve deneyimlerini paylaşmalarını sağlamak amacıyla geliştirilmiş modern bir yorum ve değerlendirme uygulamasıdır. Kullanıcı dostu arayüzü sayesinde SearchCom, mekân arama, puanlama ve yorum yapma süreçlerini hızlı ve zahmetsiz hale getirir. SearchCom da restoranlar, kafeler, eğlence mekânları ve daha birçok farklı kategori yer almakta olup, kullanıcılar gerçek deneyimlere dayalı yorumlar sayesinde gitmeyi planladıkları mekânlar hakkında güvenilir bilgilere ulaşabilirler. SearchCom, kullanıcıların hem kendi deneyimlerini paylaşmalarına olanak tanırken hem de diğer kullanıcıların yorum ve puanlarını inceleyerek daha bilinçli tercihler yapmalarını sağlar. SearchCom mekân keşif ve değerlendirme servisi sitemize hoş geldiniz, size hizmet vermek için sabırsızlanıyoruz.
