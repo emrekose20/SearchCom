@@ -6,7 +6,7 @@
 
 ## Proje Hakkında
 
-![Ürün Tanıtım Görseli](https://github.com/emrekose20/SearchCom/blob/41c33f8dcb97195697fc15c65dc764771c495226/SearchCom%20%C3%BCr%C3%BCn%20tan%C4%B1t%C4%B1m%20g%C3%B6rseli.png)
+![Ürün Tanıtım Görseli](https://github.com/emrekose20/SearchCom/blob/05c4bbf1b64d8d9d4aa6fec27761b92814d6511e/SearchCom%20%C3%9Cr%C3%BCn%20Tan%C4%B1t%C4%B1m%20G%C3%B6rseli.png)
 
 **Proje Tanımı:** 
 > SearchCom, kullanıcıların ziyaret ettikleri mekânları kolayca keşfetmelerini, puanlamalarını ve deneyimlerini paylaşmalarını sağlamak amacıyla geliştirilmiş modern bir yorum ve değerlendirme uygulamasıdır. Kullanıcı dostu arayüzü sayesinde SearchCom, mekân arama, puanlama ve yorum yapma süreçlerini hızlı ve zahmetsiz hale getirir. SearchCom da restoranlar, kafeler, eğlence mekânları ve daha birçok farklı kategori yer almakta olup, kullanıcılar gerçek deneyimlere dayalı yorumlar sayesinde gitmeyi planladıkları mekânlar hakkında güvenilir bilgilere ulaşabilirler. SearchCom, kullanıcıların hem kendi deneyimlerini paylaşmalarına olanak tanırken hem de diğer kullanıcıların yorum ve puanlarını inceleyerek daha bilinçli tercihler yapmalarını sağlar. SearchCom mekân keşif ve değerlendirme servisi sitemize hoş geldiniz, size hizmet vermek için sabırsızlanıyoruz.
