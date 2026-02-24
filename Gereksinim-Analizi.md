@@ -70,4 +70,4 @@
 # Gereksinim Dağılımları
 
 1. [Abdullah Emre Köse'nin Gereksinimleri](./Abdullah%20Emre%20K%C3%B6se/Gereksinimler.md)
-2. [Yunus Emre Yıldırım'ın Gereksinimleri](Yunus Emre YILDIRIM/Gereksinimler.md)
+2. [Yunus Emre Yıldırım'ın Gereksinimleri](./Yunus%20Emre%20Yıldırım/Gereksinimler.md)
