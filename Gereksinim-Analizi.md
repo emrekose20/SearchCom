@@ -41,8 +41,8 @@
 
 ### Yunus Emre YILDIRIM
 10. **Mekana Puan Verme**
-   - **API Metodu:** `POST /api/ratings`
-   - **Açıklama:** Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
+    - **API Metodu:** `POST /api/ratings`
+    - **Açıklama:** Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
 
 11. **Mekan Puanlarını Listeleme**
     - **API Metodu:** `GET /api/ratings/establishment/{id}`
