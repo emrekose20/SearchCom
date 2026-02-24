@@ -24,7 +24,7 @@
 
 15. **Favori Listesi Başlığını Güncelleme**
     - **API Metodu:** `PUT /api/favorites/folders/{id}`
-    - **Açıklama:** Kullanıcının oluşturduğu favori koleksiyonlarının ismini (Örn: "Hafta sonu gidilecek yerler") düzenlemesine yardımcı olur.
+    - **Açıklama:** Kullanıcının oluşturduğu favori koleksiyonlarının ismini düzenlemesine yardımcı olur.
 
 16. **Mekanı Favorilerden Çıkarma**
     - **API Metodu:** `DELETE /api/favorites/{id}`
