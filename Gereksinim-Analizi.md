@@ -22,19 +22,33 @@ Tüm gereksinimlerinizi çıkardıktan sonra beraber tartışıyoruz ve son gere
 
 # Tüm Gereksinimler 
 
-1. **Giriş Yapma** (Ali Tutar)
-   - **API Metodu:** `POST /auth/login`
-   - **Açıklama:** Kullanıcıların sisteme giriş yaparak hizmetlere erişmesini sağlar. Email adresi ve şifre ile kimlik doğrulama yapılır. Başarılı giriş sonrası kullanıcıya erişim izni verilir ve kişisel verilerin güvenliği sağlanır.
-
-2. **Üye Olma** (Ali Tutar)
-   - **API Metodu:** `POST /auth/register`
-   - **Açıklama:** Kullanıcıların yeni hesaplar oluşturarak sisteme kayıt olmasını sağlar. Kişisel bilgilerin toplanmasını ve hesap oluşturma işlemlerini içerir. Kullanıcılar email adresi ve şifre belirleyerek hesap oluşturur.
+### Grup Üyesi 1 (Abdullah Emre Köse)
+1. **İşletme Kaydı Oluşturma**
+   - **API Metodu:** `POST /api/establishments`
+   - **Açıklama:** Sisteme yeni bir restoran veya kafenin ismini ve adresini eklemeyi sağlar.
+2. **İşletme Listesini Görüntüleme**
+   - **API Metodu:** `GET /api/establishments`
+   - **Açıklama:** Kayıtlı olan tüm restoranların bir liste halinde ekranda görünmesini sağlar.
+3. **İşletme Bilgilerini Güncelleme**
+   - **API Metodu:** `PUT /api/establishments/{id}`
+   - **Açıklama:** Bir işletmenin değişen telefon numarasını veya çalışma saatlerini düzenlemeye yarar.
+4. **Hatalı İşletme Kaydını Silme**
+   - **API Metodu:** `DELETE /api/establishments/{id}`
+   - **Açıklama:** Yanlış girilen veya kapanan bir mekanın bilgilerini sistemden tamamen kaldırır.
+5. **Kullanıcı Hesabı Açma**
+   - **API Metodu:** `POST /api/users/register`
+   - **Açıklama:** Yeni bir kullanıcının isim ve e-posta ile sisteme üye olmasını sağlar.
+6. **Kullanıcı Bilgilerini Görüntüleme**
+   - **API Metodu:** `GET /api/users/{id}`
+   - **Açıklama:** Üyenin kendi profil bilgilerini ve geçmiş işlemlerini ekranda listeler.
+7. **Profil Bilgilerini Düzenleme**
+   - **API Metodu:** `PUT /api/users/{id}`
+   - **Açıklama:** Kullanıcının sistemdeki ismini veya şifresini değiştirmesine olanak tanır.
+8. **Kullanıcı Hesabını Silme**
+   - **API Metodu:** `DELETE /api/users/{id}`
+   - **Açıklama:** Kullanıcının isteği üzerine hesabını ve tüm verilerini sistemden siler.
 
 # Gereksinim Dağılımları
 
-1. [Ali Tutar'ın Gereksinimleri](Ali-Tutar/Ali-Tutar-Gereksinimler.md)
-2. [Grup Üyesi 2'nin Gereksinimleri](Grup-Uyesi-2/Grup-Uyesi-2-Gereksinimler.md)
-3. [Grup Üyesi 3'ün Gereksinimleri](Grup-Uyesi-3/Grup-Uyesi-3-Gereksinimler.md)
-4. [Grup Üyesi 4'ün Gereksinimleri](Grup-Uyesi-4/Grup-Uyesi-4-Gereksinimler.md)
-5. [Grup Üyesi 5'in Gereksinimleri](Grup-Uyesi-5/Grup-Uyesi-5-Gereksinimler.md)
-6. [Grup Üyesi 6'nın Gereksinimleri](Grup-Uyesi-6/Grup-Uyesi-6-Gereksinimler.md)
+1. [Abdullah Emre Köse'nin Gereksinimleri](./Abdullah Emre Köse/Gereksinimler.md)
+2. [Yunus Emre Yıldırım'nin Gereksinimleri](./Yunus Emre Yıldırım/Gereksinimler.md)
