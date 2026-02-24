@@ -30,7 +30,7 @@
 ## Proje Ekibi
 
 **Grup Adı:** 
-> SearchCom
+> TRAP BOYZ
 
 **Ekip Üyeleri:** 
 - Abdullah Emre KÖSE
