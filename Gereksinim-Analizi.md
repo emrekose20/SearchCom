@@ -35,7 +35,7 @@
    - **API Metodu:** `DELETE /api/users/{id}`
    - **Açıklama:** Kullanıcının isteği üzerine hesabını ve tüm verilerini sistemden siler.
 
-9. **Yapay Zeka Destekli Akıllı Mekan Önerisi (Bonus)**
+9. **Yapay Zeka Destekli Akıllı Mekan Önerisi**
    - **API Metodu:** `POST /api/ai/recommend`
    - **Açıklama:** Kullanıcının geçmiş tercihlerini analiz ederek yapay zeka yardımıyla kişiselleştirilmiş mekan önerileri sunar.
 
