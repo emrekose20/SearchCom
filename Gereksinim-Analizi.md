@@ -70,8 +70,4 @@
 # Gereksinim Dağılımları
 
 1. [Abdullah Emre Köse'nin Gereksinimleri](./Abdullah%20Emre%20K%C3%B6se/Gereksinimler.md)
-<<<<<<< HEAD
 2. [Yunus Emre Yıldırım'ın Gereksinimleri](Yunus Emre YILDIRIM/Gereksinimler.md)
-=======
-2. [Yunus Emre Yıldırım'ın Gereksinimleri](https://github.com/emrekose20/SearchCom/tree/2b57ba7247cf25a8ba55a909ec885d1338560117/Yunus%20Emre%20YILDIRIM)
->>>>>>> 9bda5870da8d40a207cc81a2d684995339dfd3ae
