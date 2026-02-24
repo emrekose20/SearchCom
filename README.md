@@ -16,7 +16,7 @@
 > Konum Tabanlı Sosyal Uygulama
 
 **Referans Uygulama:** 
-> [Örnek Referans Uygulama](https://example.com)
+> [Örnek Referans Uygulama](https://foursquare.com/)
 
 ---
 
