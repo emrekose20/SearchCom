@@ -1,29 +1,8 @@
 # API Tasarımı - OpenAPI Specification Örneği
 
-Bu doküman, OpenAPI Specification (OAS) 3.0 standardına göre hazırlanmış örnek bir API tasarımını içermektedir.
+OpenAPI Spesifikasyon Dosyası: lamine.yaml
 
-## OpenAPI Nedir?
-
-**OpenAPI** (eski adıyla Swagger), RESTful API'lerin tasarımı, dokümantasyonu ve kullanımı için kullanılan açık bir spesifikasyondur. OpenAPI, API'lerin yapısını, endpoint'lerini, parametrelerini, request/response formatlarını ve güvenlik gereksinimlerini standart bir formatta tanımlamanıza olanak sağlar.
-
-### Temel Özellikler:
-
-- **Standart Format**: YAML veya JSON formatında API'yi tanımlar
-- **Otomatik Dokümantasyon**: Swagger UI gibi araçlarla interaktif dokümantasyon oluşturur
-- **Kod Üretimi**: Client ve server kodlarını otomatik olarak üretebilir
-- **Test Kolaylığı**: API'leri doğrudan dokümantasyondan test edebilirsiniz
-- **Takım İşbirliği**: Frontend ve backend ekipleri arasında net bir sözleşme sağlar
-
-### Neden Kullanılır?
-
-1. **Tutarlılık**: Tüm API'ler aynı standartta dokümante edilir
-2. **Zaman Tasarrufu**: Otomatik dokümantasyon ve kod üretimi
-3. **Hata Azaltma**: API tasarımı kodlamadan önce netleşir
-4. **Kolay Entegrasyon**: Farklı ekipler ve sistemler arasında entegrasyon kolaylaşır
-
-## Genel Bakış
-
-Bu örnek, bir e-ticaret platformu için kullanıcı ve ürün yönetimi API'sini göstermektedir.
+Bu doküman, SearchCom ekibi tarafından geliştirilen "Mekan Yorum ve Değerlendirme Platformu" projesi için OpenAPI Specification (OAS) 3.0 standardına göre hazırlanmış API tasarımını içermektedir.
 
 ## OpenAPI Specification
 
