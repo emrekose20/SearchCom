@@ -1,6 +1,6 @@
 # API Tasarımı - OpenAPI Specification Örneği
-
-OpenAPI Spesifikasyon Dosyası: [lamine.yaml[(https://github.com/emrekose20/SearchCom/blob/b6bb47ab2c00274f767c6e9b0492f2bc95b64e91/lamine.yaml)
+[lamine.yaml](https://github.com/emrekose20/SearchCom/blob/b6bb47ab2c00274f767c6e9b0492f2bc95b64e91/lamine.yaml)
+OpenAPI Spesifikasyon Dosyası: [lamine.yaml](https://github.com/emrekose20/SearchCom/blob/b6bb47ab2c00274f767c6e9b0492f2bc95b64e91/lamine.yaml)
 
 Bu doküman, SearchCom ekibi tarafından geliştirilen "Mekan Yorum ve Değerlendirme Platformu" projesi için OpenAPI Specification (OAS) 3.0 standardına göre hazırlanmış API tasarımını içermektedir.
 
