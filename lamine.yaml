@@ -1,0 +1,483 @@
+openapi: 3.0.3
+info:
+  title: Mekan Yorum ve Değerlendirme Platformu API
+  description: |
+    Kullanıcıların ziyaret ettikleri mekanları keşfetmelerini,
+    puanlamalarını ve deneyimlerini yorum olarak paylaşmalarını sağlayan
+    modern bir değerlendirme platformu için Restful API.
+    
+    ## Özellikler
+    - Üyelik, Profil ve Hesap Yönetimi
+    - Restoran ve Kafe Kayıt/Liste İşlemleri
+    - Değerlendirme ve Yorum Yönetimi
+    - Favori Mekan Listesi Yönetimi
+  
+  version: 1.0.0
+  contact:
+    name: SearchCom API Destek Ekibi
+    email: api-support@SearchCom.com
+    url: https://api.SearchCom.com/support
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.SearchCom.com/v1
+    description: Production server
+  - url: https://staging-api.SearchCom.com/v1
+    description: Staging server
+  - url: http://localhost:3000/v1
+    description: Development server
+
+tags:
+  - name: UserOperations
+    description: Üyelik, profil ve hesap yönetimi
+  - name: EstablishmentOperations
+    description: Restoran ve kafe kayıt/liste işlemleri
+  - name: RatingOperations
+    description: Değerlendirme ve yorum yönetimi
+  - name: FavoriteOperations
+    description: Favori mekan listesi yönetimi
+paths:
+ 
+  # USER OPERATIONS
+ 
+  /users/register:
+ 
+    post:
+ 
+      tags: [UserOperations]
+ 
+      summary: Yeni kullanıcı hesabı açma
+ 
+      requestBody:
+ 
+        required: true
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              $ref: '#/components/schemas/UserCreate'
+ 
+      responses:
+ 
+        '201':
+ 
+          description: Hesap başarıyla oluşturuldu.
+ 
+        '400':
+ 
+          $ref: '#/components/responses/BadRequest'
+ 
+  /users/{id}:
+ 
+    get:
+ 
+      tags: [UserOperations]
+ 
+      summary: Kullanıcı bilgilerini görüntüleme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Bilgiler başarıyla getirildi.
+ 
+        '404':
+ 
+          $ref: '#/components/responses/NotFound'
+ 
+    put:
+ 
+      tags: [UserOperations]
+ 
+      summary: Profil bilgilerini düzenleme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      requestBody:
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              $ref: '#/components/schemas/UserUpdate'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Profil güncellendi.
+ 
+        '401':
+ 
+          $ref: '#/components/responses/Unauthorized'
+ 
+    delete:
+ 
+      tags: [UserOperations]
+ 
+      summary: Kullanıcı hesabını silme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Hesap ve tüm veriler silindi.
+ 
+  # ESTABLISHMENT OPERATIONS
+ 
+  /establishments:
+ 
+    get:
+ 
+      tags: [EstablishmentOperations]
+ 
+      summary: İşletme listesini görüntüleme
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Tüm mekanlar listelendi.
+ 
+    post:
+ 
+      tags: [EstablishmentOperations]
+ 
+      summary: İşletme kaydı oluşturma
+ 
+      requestBody:
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              $ref: '#/components/schemas/EstablishmentCreate'
+ 
+      responses:
+ 
+        '201':
+ 
+          description: Yeni mekan sisteme eklendi.
+ 
+  /establishments/{id}:
+ 
+    put:
+ 
+      tags: [EstablishmentOperations]
+ 
+      summary: İşletme bilgilerini güncelleme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Güncelleme başarılı.
+ 
+        '404':
+ 
+          $ref: '#/components/responses/NotFound'
+ 
+    delete:
+ 
+      tags: [EstablishmentOperations]
+ 
+      summary: Hatalı işletme kaydını silme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Mekan sistemden kaldırıldı.
+ 
+  # RATING AND COMMENT OPERATIONS
+ 
+  /ratings:
+ 
+    post:
+ 
+      tags: [RatingOperations]
+ 
+      summary: Mekana puan verme
+ 
+      requestBody:
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              $ref: '#/components/schemas/RatingCreate'
+ 
+      responses:
+ 
+        '201':
+ 
+          description: Puan kaydedildi.
+ 
+        '400':
+ 
+          description: Geçersiz veri!!! (1-5 arası puan olmalı)
+ 
+  /ratings/establishment/{id}:
+ 
+    get:
+ 
+      tags: [RatingOperations]
+ 
+      summary: Mekan puanlarını listeleme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Puanlar başarıyla getirildi.
+ 
+  /ratings/{id}:
+ 
+    put:
+ 
+      tags: [RatingOperations]
+ 
+      summary: Verilen puanı değiştirme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Puan güncellendi.
+ 
+  /comments/{id}:
+ 
+    delete:
+ 
+      tags: [RatingOperations]
+ 
+      summary: Mekan yorumunu silme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Yorum başarıyla kaldırıldı.
+ 
+  # FAVORITE OPERATIONS
+ 
+  /favorites:
+ 
+    post:
+ 
+      tags: [FavoriteOperations]
+ 
+      summary: Mekanı favorilere ekleme
+ 
+      requestBody:
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              $ref: '#/components/schemas/FavoriteCreate'
+ 
+      responses:
+ 
+        '201':
+ 
+          description: Favori listesine eklendi.
+ 
+  /favorites/{userId}:
+ 
+    get:
+ 
+      tags: [FavoriteOperations]
+ 
+      summary: Favori listesini görüntüleme
+ 
+      parameters:
+ 
+        - name: userId
+ 
+          in: path
+ 
+          required: true
+ 
+          schema:
+ 
+            type: integer
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Kullanıcının favorileri listelendi.
+ 
+  /favorites/folders/{id}:
+ 
+    put:
+ 
+      tags: [FavoriteOperations]
+ 
+      summary: Favori liste bilgilerini güncelleme
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Liste ismi güncellendi.
+ 
+  /favorites/{id}:
+ 
+    delete:
+ 
+      tags: [FavoriteOperations]
+ 
+      summary: Mekanı favorilerden çıkarma
+ 
+      parameters:
+ 
+        - $ref: '#/components/parameters/idParam'
+ 
+      responses:
+ 
+        '200':
+ 
+          description: Favorilerden silindi.
+ 
+components:
+ 
+  parameters:
+ 
+    idParam:
+ 
+      name: id
+ 
+      in: path
+ 
+      required: true
+ 
+      schema:
+ 
+        type: integer
+ 
+  responses:
+ 
+    BadRequest:
+ 
+      description: Bad Request (Invalid data format)
+ 
+    Unauthorized:
+ 
+      description: Unauthorized (Authentication required)
+ 
+    NotFound:
+ 
+      description: Resource Not Found
+ 
+  schemas:
+ 
+    UserCreate:
+ 
+      type: object
+ 
+      required: [name, email, password]
+ 
+      properties:
+ 
+        name: {type: string}
+ 
+        email: {type: string}
+ 
+        password: {type: string}
+ 
+    UserUpdate:
+ 
+      type: object
+ 
+      properties:
+ 
+        name: {type: string}
+ 
+        password: {type: string}
+ 
+    EstablishmentCreate:
+ 
+      type: object
+ 
+      required: [name, address]
+ 
+      properties:
+ 
+        name: {type: string}
+ 
+        address: {type: string}
+ 
+    RatingCreate:
+ 
+      type: object
+ 
+      required: [userId, establishmentId, score]
+ 
+      properties:
+ 
+        userId: {type: integer}
+ 
+        establishmentId: {type: integer}
+ 
+        score: {type: integer, minimum: 1, maximum: 5}
+ 
+    FavoriteCreate:
+ 
+      type: object
+ 
+      required: [userId, establishmentId]
+ 
+      properties:
+ 
+        userId: {type: integer}
+ 
+        establishmentId: {type: integer}
