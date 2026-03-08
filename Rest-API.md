@@ -8,9 +8,5 @@ Bu dokümanda, proje ekibindeki her üyenin geliştirmekten sorumlu olduğu REST
 
 ## Grup Üyelerinin REST API Metotları
 
-1. [Ali Tutar'ın REST API Metotları](Ali-Tutar/Ali-Tutar-Rest-API-Gorevleri.md)
-2. [Grup Üyesi 2'nin REST API Metotları](Grup-Uyesi-2/Grup-Uyesi-2-Rest-API-Gorevleri.md)
-3. [Grup Üyesi 3'ün REST API Metotları](Grup-Uyesi-3/Grup-Uyesi-3-Rest-API-Gorevleri.md)
-4. [Grup Üyesi 4'ün REST API Metotları](Grup-Uyesi-4/Grup-Uyesi-4-Rest-API-Gorevleri.md)
-5. [Grup Üyesi 5'in REST API Metotları](Grup-Uyesi-5/Grup-Uyesi-5-Rest-API-Gorevleri.md)
-6. [Grup Üyesi 6'nın REST API Metotları](Grup-Uyesi-6/Grup-Uyesi-6-Rest-API-Gorevleri.md)
+1. [Abdullah Emre KÖSE'nin REST API Metotları](Ali-Tutar/Ali-Tutar-Rest-API-Gorevleri.md)
+2. [Yunus Emre YILDIRIM'ın REST API Metotları](https://github.com/emrekose20/SearchCom/blob/e60d699a0a2c6123ec5f48dfcbdb4afc9080d80d/Yunus%20Emre%20Y%C4%B1ld%C4%B1r%C4%B1m/RestAPI%20G%C3%B6revleri.md)
