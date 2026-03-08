@@ -2,7 +2,6 @@
 
 **REST API Adresi:** [api.SearchCom.com](https://api.yazmuh.com)
 
-Bu dokümanda, proje ekibindeki her üyenin geliştirmekten sorumlu olduğu REST API metotları listelenmektedir.
 
 ---
 
