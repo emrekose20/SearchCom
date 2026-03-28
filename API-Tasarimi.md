@@ -279,7 +279,7 @@ paths:
  
       tags: [RatingOperations]
  
-      summary: Verilen puanı değiştirme
+      summary: Verilen puani değiştirme
  
       parameters:
  
@@ -290,6 +290,52 @@ paths:
         '200':
  
           description: Puan güncellendi.
+
+  /comments:
+ 
+    post:
+ 
+      tags: [RatingOperations]
+ 
+      summary: Mekana yorum ekleme
+ 
+      requestBody:
+ 
+        required: true
+ 
+        content:
+ 
+          application/json:
+ 
+            schema:
+ 
+              type: object
+ 
+              required:
+                - userId
+                - establishmentId
+                - content
+ 
+              properties:
+ 
+                userId:
+                  type: integer
+ 
+                establishmentId:
+                  type: integer
+ 
+                content:
+                  type: string
+ 
+      responses:
+ 
+        '201':
+ 
+          description: Yorum başarıyla eklendi.
+ 
+        '400':
+ 
+          description: Geçersiz veri gönderildi.
  
   /comments/{id}:
  
