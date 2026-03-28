@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
 
-const sequelize = new Sequelize("searchcom_db", "root", "1234", {
-  host: "localhost",
-  dialect: "mysql"
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "./database.sqlite",
+  logging: false
 });
 
 module.exports = sequelize;
