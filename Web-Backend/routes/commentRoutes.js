@@ -5,4 +5,4 @@ const commentController = require("../controllers/commentController");
 router.post("/", commentController.createComment);
 router.delete("/:id", commentController.deleteComment);
 
-module.exports = router;
+module.exports = router;;
