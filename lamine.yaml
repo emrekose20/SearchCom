@@ -270,7 +270,7 @@ paths:
  
       tags: [RatingOperations]
  
-      summary: Verilen puanı değiştirme
+      summary: Verilen puani değiştirme
  
       parameters:
  
