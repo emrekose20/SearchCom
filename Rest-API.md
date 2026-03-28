@@ -1,6 +1,6 @@
 # REST API Görev Dağılımı
 
-**REST API Adresi:** [api.SearchCom.com](https://api.yazmuh.com)
+**REST API Adresi:** [api.SearchCom.com](https://searchcom-api.vercel.app)
 
 
 ---
