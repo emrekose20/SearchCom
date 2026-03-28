@@ -71,6 +71,10 @@
 17. **Mekanı Favorilerden Çıkarma**
     - **API Metodu:** `DELETE /api/favorites/{id}`
     - **Açıklama:** Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
+
+18. **Mekana Yorum Ekleme**
+    - **API Metodu:** `POST /api/comments`
+    - **Açıklama:** Kullanıcının bir işletme hakkında yeni bir yorum veya değerlendirme eklemesini sağlar.
 # Gereksinim Dağılımları
 
 1. [Abdullah Emre Köse'nin Gereksinimleri](./Abdullah%20Emre%20K%C3%B6se/Gereksinimler.md)
