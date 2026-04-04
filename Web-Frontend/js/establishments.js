@@ -13,7 +13,7 @@ function getStoredUser() {
 
 function createStars(avg) {
   const full = Math.floor(avg);
-  const decimal = avg - full;
+  const fraction = avg - full;
 
   let html = "";
 
@@ -21,13 +21,16 @@ function createStars(avg) {
     html += `<span class="star full">★</span>`;
   }
 
-  if (decimal >= 0.1) {
+  if (fraction >= 0.25 && fraction < 0.75) {
     html += `<span class="star half">★</span>`;
+  } else if (fraction >= 0.75) {
+    html += `<span class="star full">★</span>`;
   }
 
-  const remaining = 5 - (full + (decimal >= 0.1 ? 1 : 0));
+  const used =
+    full + (fraction >= 0.25 && fraction < 0.75 ? 1 : 0) + (fraction >= 0.75 ? 1 : 0);
 
-  for (let i = 0; i < remaining; i++) {
+  for (let i = used; i < 5; i++) {
     html += `<span class="star empty">★</span>`;
   }
 
@@ -39,20 +42,24 @@ async function getAverageRating(establishmentId) {
     const res = await fetch(`${API_BASE}/ratings/establishment/${establishmentId}`);
     const data = await res.json();
 
-    // 🔥 backend array döndürüyorsa ortalamayı burada hesapla
-    if (Array.isArray(data)) {
-      if (data.length === 0) return 0;
-      const total = data.reduce((sum, r) => sum + r.score, 0);
+    if (!res.ok) return 0;
+
+    if (typeof data.averageScore === "number") {
+      return data.averageScore;
+    }
+
+    if (Array.isArray(data.ratings) && data.ratings.length > 0) {
+      const total = data.ratings.reduce((sum, item) => sum + Number(item.score || 0), 0);
+      return total / data.ratings.length;
+    }
+
+    if (Array.isArray(data) && data.length > 0) {
+      const total = data.reduce((sum, item) => sum + Number(item.score || 0), 0);
       return total / data.length;
     }
 
-    // 🔥 backend averageScore döndürüyorsa
-    if (data.averageScore !== undefined) {
-      return Number(data.averageScore);
-    }
-
     return 0;
-  } catch {
+  } catch (error) {
     return 0;
   }
 }
@@ -61,6 +68,11 @@ async function renderEstablishments(items) {
   const list = document.getElementById("establishmentList");
   list.innerHTML = "";
 
+  if (!items.length) {
+    list.innerHTML = `<div class="info-box">Henüz kayıtlı mekan yok.</div>`;
+    return;
+  }
+
   for (const item of items) {
     const avg = await getAverageRating(item._id);
 
@@ -68,11 +80,9 @@ async function renderEstablishments(items) {
     div.className = "list-item";
     div.innerHTML = `
       <h4>${item.name}</h4>
+      <p><strong>Ortalama Puan:</strong> ${avg.toFixed(1)}</p>
       <div class="stars-row">
         ${createStars(avg)}
-        <span style="margin-left:8px;color:#0f766e;font-weight:bold;">
-          (${avg.toFixed(1)})
-        </span>
       </div>
     `;
     list.appendChild(div);
@@ -80,9 +90,20 @@ async function renderEstablishments(items) {
 }
 
 async function getEstablishments() {
-  const res = await fetch(`${API_BASE}/establishments`);
-  const data = await res.json();
-  await renderEstablishments(data);
+  try {
+    const res = await fetch(`${API_BASE}/establishments`);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setStatus(data.message || "Mekanlar getirilemedi.", "error");
+      return;
+    }
+
+    await renderEstablishments(data);
+    setStatus(`${data.length} mekan listelendi.`, "success");
+  } catch (error) {
+    setStatus(error.message, "error");
+  }
 }
 
 if (!getStoredUser()) {
