@@ -1,5 +1,5 @@
 ## Frontend Domain Adresi
-Buraya Vercel / Netlify frontend linkini ekle
+https://search-com.vercel.app/
 
 ## Sorumlu Olduğum Frontend Gereksinimleri
 1. Yorum İşlemleri Sayfası  
