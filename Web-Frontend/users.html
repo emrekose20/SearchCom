@@ -16,15 +16,14 @@
     <div id="activeUserBox" class="user-pill hidden"></div>
 
     <div class="grid">
+
       <div class="card">
         <h3>Giriş Yap</h3>
-        <p>Var olan hesabınla giriş yap.</p>
-
         <label>Email</label>
-        <input id="loginEmail" type="email" placeholder="ornek@mail.com" />
+        <input id="loginEmail" placeholder="ali@test.com" />
 
         <label>Şifre</label>
-        <input id="loginPassword" type="password" placeholder="Şifreni gir" />
+        <input id="loginPassword" type="password" placeholder="1234" />
 
         <div class="btn-row">
           <button onclick="loginUser()">Giriş Yap</button>
@@ -33,17 +32,16 @@
       </div>
 
       <div class="card">
-        <h3>Kayıt Ol</h3>
-        <p>Yeni bir SearchCom hesabı oluştur.</p>
+        <h3>Kullanıcı Oluştur</h3>
 
         <label>İsim</label>
         <input id="registerName" placeholder="Ad Soyad" />
 
         <label>Email</label>
-        <input id="registerEmail" type="email" placeholder="ornek@mail.com" />
+        <input id="registerEmail" placeholder="ornek@mail.com" />
 
         <label>Şifre</label>
-        <input id="registerPassword" type="password" placeholder="Şifre oluştur" />
+        <input id="registerPassword" type="password" placeholder="1234" />
 
         <div class="btn-row">
           <button onclick="registerUser()">Kullanıcı Oluştur</button>
@@ -52,7 +50,6 @@
 
       <div class="card">
         <h3>Kullanıcı Getir</h3>
-        <p>ID ile kullanıcı bilgisi getir.</p>
 
         <label>Kullanıcı ID</label>
         <input id="getUserId" placeholder="Mongo kullanıcı id" />
@@ -63,11 +60,10 @@
       </div>
 
       <div class="card">
-        <h3>Profil Güncelle</h3>
-        <p>Giriş yapan kullanıcıyı ya da ID ile seçtiğin kullanıcıyı güncelle.</p>
+        <h3>Kullanıcı Güncelle</h3>
 
         <label>Kullanıcı ID</label>
-        <input id="updateUserId" placeholder="Boş bırakırsan giriş yapan kullanıcı kullanılır" />
+        <input id="updateUserId" placeholder="Boş bırakılırsa giriş yapan kullanılır" />
 
         <label>Yeni İsim</label>
         <input id="updateUserName" placeholder="Yeni isim" />
@@ -82,15 +78,15 @@
 
       <div class="card">
         <h3>Kullanıcı Sil</h3>
-        <p>Giriş yapan kullanıcıyı ya da verdiğin ID’yi sil.</p>
 
         <label>Kullanıcı ID</label>
-        <input id="deleteUserId" placeholder="Boş bırakırsan giriş yapan kullanıcı kullanılır" />
+        <input id="deleteUserId" placeholder="Boş bırakılırsa giriş yapan kullanılır" />
 
         <div class="btn-row">
           <button class="danger" onclick="deleteUser()">Kullanıcıyı Sil</button>
         </div>
       </div>
+
     </div>
 
     <div id="status" class="status"></div>

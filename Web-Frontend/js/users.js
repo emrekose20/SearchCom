@@ -28,8 +28,8 @@ function updateActiveUserUI() {
 async function registerUser() {
   try {
     const body = {
-      name: document.getElementById("registerName").value.trim(),
-      email: document.getElementById("registerEmail").value.trim(),
+      name: document.getElementById("registerName").value,
+      email: document.getElementById("registerEmail").value,
       password: document.getElementById("registerPassword").value
     };
 
@@ -41,25 +41,18 @@ async function registerUser() {
 
     const data = await res.json();
 
-    if (!res.ok) {
-      setStatus(data.message || "Kayıt başarısız.", "error");
-      return;
-    }
+    if (!res.ok) return setStatus(data.message, "error");
 
-    setStatus("Kayıt başarılı. Şimdi giriş yapabilirsin.", "success");
-
-    document.getElementById("registerName").value = "";
-    document.getElementById("registerEmail").value = "";
-    document.getElementById("registerPassword").value = "";
-  } catch (error) {
-    setStatus(error.message, "error");
+    setStatus("Kayıt başarılı");
+  } catch (err) {
+    setStatus(err.message, "error");
   }
 }
 
 async function loginUser() {
   try {
     const body = {
-      email: document.getElementById("loginEmail").value.trim(),
+      email: document.getElementById("loginEmail").value,
       password: document.getElementById("loginPassword").value
     };
 
@@ -71,74 +64,49 @@ async function loginUser() {
 
     const data = await res.json();
 
-    if (!res.ok) {
-      setStatus(data.message || "Giriş başarısız.", "error");
-      return;
-    }
+    if (!res.ok) return setStatus(data.message, "error");
 
     localStorage.setItem("searchcomUser", JSON.stringify(data.user));
     updateActiveUserUI();
-    setStatus(`Hoş geldin ${data.user.name}!`, "success");
 
-    document.getElementById("loginEmail").value = "";
-    document.getElementById("loginPassword").value = "";
-  } catch (error) {
-    setStatus(error.message, "error");
+    setStatus("Giriş başarılı");
+  } catch (err) {
+    setStatus(err.message, "error");
   }
 }
 
 function logoutUser() {
   localStorage.removeItem("searchcomUser");
   updateActiveUserUI();
-  setStatus("Çıkış yapıldı.", "warning");
+  setStatus("Çıkış yapıldı", "warning");
 }
 
 async function getUser() {
   try {
-    const id = document.getElementById("getUserId").value.trim();
-    if (!id) {
-      setStatus("Lütfen kullanıcı ID gir.", "error");
-      return;
-    }
+    const id = document.getElementById("getUserId").value;
 
     const res = await fetch(`${API_BASE}/users/${id}`);
     const data = await res.json();
 
-    if (!res.ok) {
-      setStatus(data.message || "Kullanıcı getirilemedi.", "error");
-      return;
-    }
+    if (!res.ok) return setStatus(data.message, "error");
 
-    setStatus(`Kullanıcı bulundu: ${data.name} - ${data.email}`, "success");
-  } catch (error) {
-    setStatus(error.message, "error");
+    setStatus(`Kullanıcı: ${data.name}`);
+  } catch (err) {
+    setStatus(err.message, "error");
   }
 }
 
 async function updateUser() {
   try {
-    const storedUser = getStoredUser();
-    const inputId = document.getElementById("updateUserId").value.trim();
-    const userId = inputId || (storedUser ? storedUser._id : "");
+    const stored = getStoredUser();
+    const id = document.getElementById("updateUserId").value || stored?._id;
 
-    if (!userId) {
-      setStatus("Güncellemek için kullanıcı ID gir ya da önce giriş yap.", "error");
-      return;
-    }
+    const body = {
+      name: document.getElementById("updateUserName").value,
+      password: document.getElementById("updateUserPassword").value
+    };
 
-    const body = {};
-    const newName = document.getElementById("updateUserName").value.trim();
-    const newPassword = document.getElementById("updateUserPassword").value;
-
-    if (newName) body.name = newName;
-    if (newPassword) body.password = newPassword;
-
-    if (!body.name && !body.password) {
-      setStatus("En az bir alan doldurmalısın.", "error");
-      return;
-    }
-
-    const res = await fetch(`${API_BASE}/users/${userId}`, {
+    const res = await fetch(`${API_BASE}/users/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body)
@@ -146,60 +114,31 @@ async function updateUser() {
 
     const data = await res.json();
 
-    if (!res.ok) {
-      setStatus(data.message || "Güncelleme başarısız.", "error");
-      return;
-    }
+    if (!res.ok) return setStatus(data.message, "error");
 
-    if (storedUser && storedUser._id === userId) {
-      const updatedUser = {
-        ...storedUser,
-        ...(data.user || {})
-      };
-      localStorage.setItem("searchcomUser", JSON.stringify(updatedUser));
-      updateActiveUserUI();
-    }
-
-    setStatus(data.message || "Profil güncellendi.", "success");
-
-    document.getElementById("updateUserName").value = "";
-    document.getElementById("updateUserPassword").value = "";
-  } catch (error) {
-    setStatus(error.message, "error");
+    setStatus("Güncellendi");
+  } catch (err) {
+    setStatus(err.message, "error");
   }
 }
 
 async function deleteUser() {
   try {
-    const storedUser = getStoredUser();
-    const inputId = document.getElementById("deleteUserId").value.trim();
-    const userId = inputId || (storedUser ? storedUser._id : "");
+    const stored = getStoredUser();
+    const id = document.getElementById("deleteUserId").value || stored?._id;
 
-    if (!userId) {
-      setStatus("Silmek için kullanıcı ID gir ya da önce giriş yap.", "error");
-      return;
-    }
-
-    const res = await fetch(`${API_BASE}/users/${userId}`, {
+    const res = await fetch(`${API_BASE}/users/${id}`, {
       method: "DELETE"
     });
 
     const data = await res.json();
 
-    if (!res.ok) {
-      setStatus(data.message || "Silme işlemi başarısız.", "error");
-      return;
-    }
+    if (!res.ok) return setStatus(data.message, "error");
 
-    if (storedUser && storedUser._id === userId) {
-      localStorage.removeItem("searchcomUser");
-      updateActiveUserUI();
-    }
-
-    setStatus(data.message || "Kullanıcı silindi.", "success");
-    document.getElementById("deleteUserId").value = "";
-  } catch (error) {
-    setStatus(error.message, "error");
+    logoutUser();
+    setStatus("Silindi");
+  } catch (err) {
+    setStatus(err.message, "error");
   }
 }
 
