@@ -10,22 +10,15 @@
   <div class="container">
     <div class="topbar">
       <h2>Favori İşlemleri</h2>
-      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
-    </div>
-
-    <div class="info-box">
-      Giriş yaptıysan kullanıcı ID alanlarını boş bırakabilirsin.
+      <a class="back-link" href="panel.html">Panele Dön</a>
     </div>
 
     <div class="grid">
       <div class="card">
         <h3>Favoriye Ekle</h3>
 
-        <label>Kullanıcı ID</label>
-        <input id="favoriteUserId" placeholder="Boş bırakılabilir" />
-
-        <label>Mekân ID</label>
-        <input id="favoriteEstablishmentId" placeholder="Mongo mekan id" />
+        <label>Mekân Adı</label>
+        <input id="favoriteEstablishmentName" placeholder="Kafe İstanbul" />
 
         <div class="btn-row">
           <button onclick="addFavorite()">Favoriye Ekle</button>
@@ -33,42 +26,26 @@
       </div>
 
       <div class="card">
-        <h3>Favorileri Getir</h3>
-
-        <label>Kullanıcı ID</label>
-        <input id="getFavoritesUserId" placeholder="Boş bırakılabilir" />
-
-        <div class="btn-row">
-          <button class="secondary" onclick="getFavorites()">Favorileri Listele</button>
-        </div>
-
-        <div id="favoriteList" class="list-box"></div>
-      </div>
-
-      <div class="card">
         <h3>Favori Sil</h3>
 
         <label>Favori ID</label>
-        <input id="deleteFavoriteId" placeholder="Mongo favori id" />
+        <input id="deleteFavoriteId" placeholder="Favori id" />
 
         <div class="btn-row">
           <button class="danger" onclick="deleteFavorite()">Favoriden Çıkar</button>
         </div>
       </div>
+    </div>
 
-      <div class="card">
-        <h3>Klasör Güncelle</h3>
+    <div class="card" style="margin-top: 20px;">
+      <h3>Favorilerim</h3>
+      <p>Kendi favori mekanlarını burada görebilirsin.</p>
 
-        <label>Klasör ID</label>
-        <input id="folderId" placeholder="Mongo klasör id" />
-
-        <label>Yeni Klasör Adı</label>
-        <input id="folderName" placeholder="Hafta sonu mekanları" />
-
-        <div class="btn-row">
-          <button onclick="updateFolder()">Klasörü Güncelle</button>
-        </div>
+      <div class="btn-row" style="margin-bottom: 14px;">
+        <button class="secondary" onclick="loadMyFavorites()">Favorilerimi Listele</button>
       </div>
+
+      <div id="myFavoritesList" class="list-box"></div>
     </div>
 
     <div id="status" class="status"></div>

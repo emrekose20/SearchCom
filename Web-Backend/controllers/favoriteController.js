@@ -1,22 +1,45 @@
-const { Favorite, FavoriteFolder } = require("../models");
+const { Favorite, Establishment } = require("../models");
 
 exports.createFavorite = async (req, res) => {
   try {
-    const { userId, establishmentId, folderId } = req.body;
+    const { userId, establishmentName } = req.body;
 
-    if (!userId || !establishmentId) {
+    if (!userId || !establishmentName) {
       return res.status(400).json({
-        message: "userId ve establishmentId zorunludur."
+        message: "userId ve establishmentName zorunludur."
+      });
+    }
+
+    const establishment = await Establishment.findOne({
+      name: establishmentName.trim()
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Bu isimde mekan bulunamadı."
+      });
+    }
+
+    const existingFavorite = await Favorite.findOne({
+      userId,
+      establishmentId: establishment._id
+    });
+
+    if (existingFavorite) {
+      return res.status(400).json({
+        message: "Bu mekan zaten favorilerinde mevcut."
       });
     }
 
     const favorite = await Favorite.create({
       userId,
-      establishmentId,
-      folderId: folderId || null
+      establishmentId: establishment._id
     });
 
-    return res.status(201).json(favorite);
+    return res.status(201).json({
+      message: "Mekan favorilere eklendi.",
+      favorite
+    });
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",
@@ -27,45 +50,16 @@ exports.createFavorite = async (req, res) => {
 
 exports.getFavoritesByUser = async (req, res) => {
   try {
-    const favorites = await Favorite.find({
-      userId: req.params.userId
-    });
+    const favorites = await Favorite.find({ userId: req.params.userId })
+      .sort({ createdAt: -1 })
+      .populate("establishmentId", "name");
 
-    return res.status(200).json(favorites);
-  } catch (error) {
-    return res.status(500).json({
-      message: "Sunucu hatası",
-      error: error.message
-    });
-  }
-};
+    const formattedFavorites = favorites.map((favorite) => ({
+      _id: favorite._id,
+      establishmentName: favorite.establishmentId?.name || "Mekan bulunamadı"
+    }));
 
-exports.updateFavoriteFolder = async (req, res) => {
-  try {
-    const { folderName } = req.body;
-
-    if (!folderName) {
-      return res.status(400).json({
-        message: "folderName zorunludur."
-      });
-    }
-
-    const folder = await FavoriteFolder.findByIdAndUpdate(
-      req.params.id,
-      { folderName },
-      { new: true, runValidators: true }
-    );
-
-    if (!folder) {
-      return res.status(404).json({
-        message: "Favori klasörü bulunamadı."
-      });
-    }
-
-    return res.status(200).json({
-      message: "Favori listesi başlığı güncellendi.",
-      folder
-    });
+    return res.status(200).json(formattedFavorites);
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",

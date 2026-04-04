@@ -11,35 +11,62 @@ function getStoredUser() {
   return raw ? JSON.parse(raw) : null;
 }
 
-function renderFavorites(items) {
-  const list = document.getElementById("favoriteList");
+function renderMyFavorites(favorites) {
+  const list = document.getElementById("myFavoritesList");
   list.innerHTML = "";
 
-  if (!items.length) {
-    list.innerHTML = `<div class="info-box">Henüz favori kayıt yok.</div>`;
+  if (!favorites.length) {
+    list.innerHTML = `<div class="info-box">Henüz favori mekan eklemedin.</div>`;
     return;
   }
 
-  items.forEach(item => {
+  favorites.forEach((favorite) => {
     const div = document.createElement("div");
     div.className = "list-item";
     div.innerHTML = `
-      <h4>Favori Kayıt</h4>
-      <p><strong>Favori ID:</strong> ${item._id}</p>
-      <p><strong>Mekân ID:</strong> ${item.establishmentId}</p>
-      <p><strong>Klasör ID:</strong> ${item.folderId || "-"}</p>
+      <h4>${favorite.establishmentName}</h4>
+      <p><strong>Favori ID:</strong> ${favorite._id}</p>
     `;
     list.appendChild(div);
   });
 }
 
+async function loadMyFavorites() {
+  try {
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
+
+    const res = await fetch(`${API_BASE}/favorites/${user._id}`);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setStatus(data.message || "Favoriler getirilemedi.", "error");
+      return;
+    }
+
+    renderMyFavorites(data);
+    setStatus("Favorilerin listelendi.", "success");
+  } catch (error) {
+    setStatus(error.message, "error");
+  }
+}
+
 async function addFavorite() {
   try {
-    const storedUser = getStoredUser();
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
 
     const body = {
-      userId: document.getElementById("favoriteUserId").value.trim() || (storedUser ? storedUser._id : ""),
-      establishmentId: document.getElementById("favoriteEstablishmentId").value.trim()
+      userId: user._id,
+      establishmentName: document.getElementById("favoriteEstablishmentName").value.trim()
     };
 
     const res = await fetch(`${API_BASE}/favorites`, {
@@ -55,32 +82,9 @@ async function addFavorite() {
       return;
     }
 
-    setStatus("Mekân favorilere eklendi.", "success");
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
-}
-
-async function getFavorites() {
-  try {
-    const storedUser = getStoredUser();
-    const userId = document.getElementById("getFavoritesUserId").value.trim() || (storedUser ? storedUser._id : "");
-
-    if (!userId) {
-      setStatus("Favorileri görmek için kullanıcı ID gir ya da giriş yap.", "error");
-      return;
-    }
-
-    const res = await fetch(`${API_BASE}/favorites/${userId}`);
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Favoriler getirilemedi.", "error");
-      return;
-    }
-
-    renderFavorites(data);
-    setStatus("Favoriler listelendi.", "success");
+    setStatus(data.message || "Mekan favorilere eklendi.", "success");
+    document.getElementById("favoriteEstablishmentName").value = "";
+    loadMyFavorites();
   } catch (error) {
     setStatus(error.message, "error");
   }
@@ -88,6 +92,13 @@ async function getFavorites() {
 
 async function deleteFavorite() {
   try {
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
+
     const id = document.getElementById("deleteFavoriteId").value.trim();
 
     const res = await fetch(`${API_BASE}/favorites/${id}`, {
@@ -102,33 +113,11 @@ async function deleteFavorite() {
     }
 
     setStatus(data.message || "Favori kaldırıldı.", "success");
+    document.getElementById("deleteFavoriteId").value = "";
+    loadMyFavorites();
   } catch (error) {
     setStatus(error.message, "error");
   }
 }
 
-async function updateFolder() {
-  try {
-    const id = document.getElementById("folderId").value.trim();
-    const body = {
-      folderName: document.getElementById("folderName").value.trim()
-    };
-
-    const res = await fetch(`${API_BASE}/favorites/folders/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Klasör güncellenemedi.", "error");
-      return;
-    }
-
-    setStatus(data.message || "Klasör güncellendi.", "success");
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
-}
+loadMyFavorites();
