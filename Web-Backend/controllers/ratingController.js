@@ -1,12 +1,12 @@
-const { Rating } = require("../models");
+const { Rating, Establishment } = require("../models");
 
 exports.createRating = async (req, res) => {
   try {
-    const { userId, establishmentId, score } = req.body;
+    const { userId, establishmentName, score } = req.body;
 
-    if (!userId || !establishmentId || score === undefined) {
+    if (!userId || !establishmentName || score === undefined) {
       return res.status(400).json({
-        message: "userId, establishmentId ve score zorunludur."
+        message: "userId, establishmentName ve score zorunludur."
       });
     }
 
@@ -16,13 +16,26 @@ exports.createRating = async (req, res) => {
       });
     }
 
+    const establishment = await Establishment.findOne({
+      name: establishmentName.trim()
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Bu isimde mekan bulunamadı."
+      });
+    }
+
     const rating = await Rating.create({
       userId,
-      establishmentId,
+      establishmentId: establishment._id,
       score
     });
 
-    return res.status(201).json(rating);
+    return res.status(201).json({
+      message: "Puan oluşturuldu.",
+      rating
+    });
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",
@@ -31,21 +44,19 @@ exports.createRating = async (req, res) => {
   }
 };
 
-exports.getRatingsByEstablishment = async (req, res) => {
+exports.getMyRatings = async (req, res) => {
   try {
-    const ratings = await Rating.find({
-      establishmentId: req.params.id
-    });
+    const ratings = await Rating.find({ userId: req.params.userId })
+      .sort({ createdAt: -1 })
+      .populate("establishmentId", "name");
 
-    const count = ratings.length;
-    const total = ratings.reduce((sum, item) => sum + item.score, 0);
-    const average = count > 0 ? total / count : 0;
+    const formattedRatings = ratings.map((rating) => ({
+      _id: rating._id,
+      score: rating.score,
+      establishmentName: rating.establishmentId?.name || "Mekan bulunamadı"
+    }));
 
-    return res.status(200).json({
-      establishmentId: req.params.id,
-      averageScore: average,
-      ratings
-    });
+    return res.status(200).json(formattedRatings);
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",
@@ -71,7 +82,9 @@ exports.updateRating = async (req, res) => {
     );
 
     if (!rating) {
-      return res.status(404).json({ message: "Puan bulunamadı." });
+      return res.status(404).json({
+        message: "Puan bulunamadı."
+      });
     }
 
     return res.status(200).json({

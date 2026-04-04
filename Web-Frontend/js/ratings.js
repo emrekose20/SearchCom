@@ -11,37 +11,63 @@ function getStoredUser() {
   return raw ? JSON.parse(raw) : null;
 }
 
-function renderRatings(data) {
-  const box = document.getElementById("ratingInfo");
-  box.innerHTML = "";
+function renderMyRatings(ratings) {
+  const list = document.getElementById("myRatingsList");
+  list.innerHTML = "";
 
-  const summary = document.createElement("div");
-  summary.className = "list-item";
-  summary.innerHTML = `
-    <h4>Ortalama Puan</h4>
-    <p>${Number(data.averageScore || 0).toFixed(1)} / 5</p>
-  `;
-  box.appendChild(summary);
+  if (!ratings.length) {
+    list.innerHTML = `<div class="info-box">Henüz puan vermedin.</div>`;
+    return;
+  }
 
-  (data.ratings || []).forEach(item => {
+  ratings.forEach((rating) => {
     const div = document.createElement("div");
     div.className = "list-item";
     div.innerHTML = `
-      <h4>Puan: ${item.score}</h4>
-      <p><strong>Puan ID:</strong> ${item._id}</p>
-      <p><strong>Kullanıcı ID:</strong> ${item.userId}</p>
+      <h4>${rating.establishmentName}</h4>
+      <p><strong>Puan:</strong> ${rating.score}</p>
+      <p><strong>Puan ID:</strong> ${rating._id}</p>
     `;
-    box.appendChild(div);
+    list.appendChild(div);
   });
+}
+
+async function loadMyRatings() {
+  try {
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
+
+    const res = await fetch(`${API_BASE}/ratings/user/${user._id}`);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setStatus(data.message || "Puanlar getirilemedi.", "error");
+      return;
+    }
+
+    renderMyRatings(data);
+    setStatus("Puanların listelendi.", "success");
+  } catch (error) {
+    setStatus(error.message, "error");
+  }
 }
 
 async function addRating() {
   try {
-    const storedUser = getStoredUser();
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
 
     const body = {
-      userId: document.getElementById("ratingUserId").value.trim() || (storedUser ? storedUser._id : ""),
-      establishmentId: document.getElementById("ratingEstablishmentId").value.trim(),
+      userId: user._id,
+      establishmentName: document.getElementById("ratingEstablishmentName").value.trim(),
       score: Number(document.getElementById("ratingScore").value)
     };
 
@@ -59,25 +85,9 @@ async function addRating() {
     }
 
     setStatus("Puan başarıyla gönderildi.", "success");
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
-}
-
-async function getRatings() {
-  try {
-    const id = document.getElementById("getRatingsEstablishmentId").value.trim();
-
-    const res = await fetch(`${API_BASE}/ratings/establishment/${id}`);
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Puanlar getirilemedi.", "error");
-      return;
-    }
-
-    renderRatings(data);
-    setStatus("Puanlar listelendi.", "success");
+    document.getElementById("ratingEstablishmentName").value = "";
+    document.getElementById("ratingScore").value = "";
+    loadMyRatings();
   } catch (error) {
     setStatus(error.message, "error");
   }
@@ -85,6 +95,13 @@ async function getRatings() {
 
 async function updateRating() {
   try {
+    const user = getStoredUser();
+
+    if (!user?._id) {
+      window.location.href = "users.html";
+      return;
+    }
+
     const id = document.getElementById("updateRatingId").value.trim();
     const body = {
       score: Number(document.getElementById("updateRatingScore").value)
@@ -104,7 +121,12 @@ async function updateRating() {
     }
 
     setStatus(data.message || "Puan güncellendi.", "success");
+    document.getElementById("updateRatingId").value = "";
+    document.getElementById("updateRatingScore").value = "";
+    loadMyRatings();
   } catch (error) {
     setStatus(error.message, "error");
   }
 }
+
+loadMyRatings();
