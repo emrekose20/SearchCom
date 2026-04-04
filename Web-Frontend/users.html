@@ -1,12 +1,22 @@
-<h2>Kullanıcı</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kullanıcı</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
  
-<input id="name" placeholder="isim">
-<input id="email" placeholder="email">
-<input id="password" placeholder="şifre">
+<h2>Kullanıcı İşlemleri</h2>
+ 
+<input id="name" placeholder="İsim">
+<input id="email" placeholder="Email">
+<input id="password" placeholder="Şifre">
  
 <button onclick="registerUser()">Kayıt Ol</button>
  
-<input id="userId" placeholder="id">
+<hr>
+ 
+<input id="userId" placeholder="User ID">
 <button onclick="getUser()">Getir</button>
 <button onclick="updateUser()">Güncelle</button>
 <button onclick="deleteUser()">Sil</button>
@@ -14,3 +24,5 @@
 <pre id="result"></pre>
  
 <script src="js/users.js"></script>
+</body>
+</html>
