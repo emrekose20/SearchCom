@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
-const { sequelize } = require("./models");
+const connectDB = require("./config/db");
 
 const userRoutes = require("./routes/userRoutes");
 const establishmentRoutes = require("./routes/establishmentRoutes");
@@ -19,10 +21,10 @@ app.use("/api/ratings", ratingRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/favorites", favoriteRoutes);
 
-sequelize.sync().then(() => {
-  app.listen(3000, () => {
-    console.log("Server çalışıyor: http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+connectDB().then(() => {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server çalışıyor: http://localhost:${PORT}`);
   });
-}).catch((err) => {
-  console.error("Veritabanı bağlantı hatası:", err);
 });
