@@ -9,18 +9,17 @@
 <body>
   <div class="container">
     <div class="topbar">
-      <h2>Kullanıcı İşlemleri</h2>
+      <h2>Kayıt / Giriş</h2>
       <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
     </div>
 
     <div id="activeUserBox" class="user-pill hidden"></div>
 
     <div class="grid">
-
       <div class="card">
         <h3>Giriş Yap</h3>
         <label>Email</label>
-        <input id="loginEmail" placeholder="ali@test.com" />
+        <input id="loginEmail" type="email" placeholder="ali@test.com" />
 
         <label>Şifre</label>
         <input id="loginPassword" type="password" placeholder="1234" />
@@ -32,38 +31,33 @@
       </div>
 
       <div class="card">
-        <h3>Kullanıcı Oluştur</h3>
-
+        <h3>Kayıt Ol</h3>
         <label>İsim</label>
         <input id="registerName" placeholder="Ad Soyad" />
 
         <label>Email</label>
-        <input id="registerEmail" placeholder="ornek@mail.com" />
+        <input id="registerEmail" type="email" placeholder="ornek@mail.com" />
 
         <label>Şifre</label>
         <input id="registerPassword" type="password" placeholder="1234" />
 
         <div class="btn-row">
-          <button onclick="registerUser()">Kullanıcı Oluştur</button>
+          <button onclick="registerUser()">Kayıt Ol</button>
         </div>
       </div>
 
       <div class="card">
-        <h3>Kullanıcı Getir</h3>
-
-        <label>Kullanıcı ID</label>
-        <input id="getUserId" placeholder="Mongo kullanıcı id" />
+        <h3>Profil Bilgim</h3>
+        <p>Giriş yaptıktan sonra kendi bilgilerini getir.</p>
 
         <div class="btn-row">
-          <button class="secondary" onclick="getUser()">Bilgileri Getir</button>
+          <button class="secondary" onclick="getMyUser()">Bilgilerimi Getir</button>
         </div>
       </div>
 
       <div class="card">
-        <h3>Kullanıcı Güncelle</h3>
-
-        <label>Kullanıcı ID</label>
-        <input id="updateUserId" placeholder="Boş bırakılırsa giriş yapan kullanılır" />
+        <h3>Profil Güncelle</h3>
+        <p>Giriş yapan kullanıcı için otomatik güncellenir.</p>
 
         <label>Yeni İsim</label>
         <input id="updateUserName" placeholder="Yeni isim" />
@@ -77,16 +71,13 @@
       </div>
 
       <div class="card">
-        <h3>Kullanıcı Sil</h3>
-
-        <label>Kullanıcı ID</label>
-        <input id="deleteUserId" placeholder="Boş bırakılırsa giriş yapan kullanılır" />
+        <h3>Hesabı Sil</h3>
+        <p>Giriş yapan kullanıcının hesabı silinir.</p>
 
         <div class="btn-row">
-          <button class="danger" onclick="deleteUser()">Kullanıcıyı Sil</button>
+          <button class="danger" onclick="deleteUser()">Hesabımı Sil</button>
         </div>
       </div>
-
     </div>
 
     <div id="status" class="status"></div>

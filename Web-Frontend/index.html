@@ -11,45 +11,37 @@
     <section class="hero">
       <h1>SearchCom</h1>
       <p>
-        SearchCom, kullanıcıların ziyaret ettikleri mekânları kolayca keşfetmelerini,
-        puanlamalarını ve deneyimlerini paylaşmalarını sağlayan modern bir yorum ve
-        değerlendirme uygulamasıdır.
+        SearchCom, kullanıcıların ziyaret ettikleri mekânları keşfetmelerini,
+        puanlamalarını ve deneyimlerini paylaşmalarını sağlayan modern bir yorum
+        ve değerlendirme uygulamasıdır.
       </p>
 
       <div class="hero-badges">
         <span class="badge">📍 Mekân keşfet</span>
         <span class="badge">⭐ Puanla</span>
         <span class="badge">💬 Yorum paylaş</span>
-        <span class="badge">❤️ Favorilerine ekle</span>
+        <span class="badge">❤️ Favorilere ekle</span>
       </div>
 
       <div class="nav-grid">
         <a class="nav-card" href="users.html">
-          <h3>Giriş / Kayıt</h3>
-          <p>Hesabını oluştur, giriş yap ve profilini yönet.</p>
+          <h3>Giriş Yap</h3>
+          <p>Hesabın varsa giriş yap ve panele geç.</p>
         </a>
 
-        <a class="nav-card" href="establishments.html">
-          <h3>Mekânlar</h3>
-          <p>Yeni mekân ekle, mevcut mekânları görüntüle ve düzenle.</p>
-        </a>
-
-        <a class="nav-card" href="comments.html">
-          <h3>Yorumlar</h3>
-          <p>Bir mekân hakkındaki deneyimini paylaş veya yorum kaldır.</p>
-        </a>
-
-        <a class="nav-card" href="ratings.html">
-          <h3>Puanlar</h3>
-          <p>Mekânlara yıldız ver, puanları gör ve güncelle.</p>
-        </a>
-
-        <a class="nav-card" href="favorites.html">
-          <h3>Favoriler</h3>
-          <p>Beğendiğin mekânları favorilerine ekle ve düzenle.</p>
+        <a class="nav-card" href="users.html">
+          <h3>Kayıt Ol</h3>
+          <p>Yeni hesap oluştur ve ardından giriş yap.</p>
         </a>
       </div>
     </section>
   </div>
+
+  <script>
+    const user = localStorage.getItem("searchcomUser");
+    if (user) {
+      window.location.href = "panel.html";
+    }
+  </script>
 </body>
 </html>
