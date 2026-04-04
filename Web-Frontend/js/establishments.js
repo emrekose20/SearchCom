@@ -6,6 +6,11 @@ function setStatus(message, type = "success") {
   status.className = `status ${type}`;
 }
 
+function getStoredUser() {
+  const raw = localStorage.getItem("searchcomUser");
+  return raw ? JSON.parse(raw) : null;
+}
+
 function renderEstablishments(items) {
   const list = document.getElementById("establishmentList");
   list.innerHTML = "";
@@ -21,39 +26,9 @@ function renderEstablishments(items) {
     div.innerHTML = `
       <h4>${item.name}</h4>
       <p>${item.address}</p>
-      <p><strong>ID:</strong> ${item._id}</p>
     `;
     list.appendChild(div);
   });
-}
-
-async function createEstablishment() {
-  try {
-    const body = {
-      name: document.getElementById("createEstablishmentName").value.trim(),
-      address: document.getElementById("createEstablishmentAddress").value.trim()
-    };
-
-    const res = await fetch(`${API_BASE}/establishments`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Mekân eklenemedi.", "error");
-      return;
-    }
-
-    setStatus("Mekân başarıyla eklendi.", "success");
-    document.getElementById("createEstablishmentName").value = "";
-    document.getElementById("createEstablishmentAddress").value = "";
-    getEstablishments();
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
 }
 
 async function getEstablishments() {
@@ -73,53 +48,8 @@ async function getEstablishments() {
   }
 }
 
-async function updateEstablishment() {
-  try {
-    const id = document.getElementById("updateEstablishmentId").value.trim();
-    const body = {
-      name: document.getElementById("updateEstablishmentName").value.trim(),
-      address: document.getElementById("updateEstablishmentAddress").value.trim()
-    };
-
-    const res = await fetch(`${API_BASE}/establishments/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Güncelleme başarısız.", "error");
-      return;
-    }
-
-    setStatus(data.message || "Mekân güncellendi.", "success");
-    getEstablishments();
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
-}
-
-async function deleteEstablishment() {
-  try {
-    const id = document.getElementById("deleteEstablishmentId").value.trim();
-
-    const res = await fetch(`${API_BASE}/establishments/${id}`, {
-      method: "DELETE"
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setStatus(data.message || "Silme işlemi başarısız.", "error");
-      return;
-    }
-
-    setStatus(data.message || "Mekân silindi.", "success");
-    document.getElementById("deleteEstablishmentId").value = "";
-    getEstablishments();
-  } catch (error) {
-    setStatus(error.message, "error");
-  }
+if (!getStoredUser()) {
+  window.location.href = "users.html";
+} else {
+  getEstablishments();
 }

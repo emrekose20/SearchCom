@@ -3,68 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mekân İşlemleri</title>
+  <title>Mekânlar</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div class="container">
     <div class="topbar">
-      <h2>Mekân İşlemleri</h2>
-      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+      <h2>Mekânlar</h2>
+      <a class="back-link" href="panel.html">Panele Dön</a>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Mekân Oluştur</h3>
-        <p>Yeni bir restoran, kafe veya işletme ekle.</p>
+    <div class="card">
+      <h3>Kayıtlı Mekânlar</h3>
+      <p>Sistemde kayıtlı mekânları buradan görüntüleyebilirsin.</p>
 
-        <label>Mekân Adı</label>
-        <input id="createEstablishmentName" placeholder="Kafe İstanbul" />
-
-        <label>Adres</label>
-        <input id="createEstablishmentAddress" placeholder="Kadıköy / İstanbul" />
-
-        <div class="btn-row">
-          <button onclick="createEstablishment()">Mekân Ekle</button>
-        </div>
+      <div class="btn-row">
+        <button class="secondary" onclick="getEstablishments()">Mekânları Listele</button>
       </div>
 
-      <div class="card">
-        <h3>Mekânları Listele</h3>
-        <p>Kayıtlı tüm mekânları kullanıcı dostu şekilde görüntüle.</p>
-
-        <div class="btn-row">
-          <button class="secondary" onclick="getEstablishments()">Listele</button>
-        </div>
-
-        <div id="establishmentList" class="list-box"></div>
-      </div>
-
-      <div class="card">
-        <h3>Mekân Güncelle</h3>
-        <label>Mekân ID</label>
-        <input id="updateEstablishmentId" placeholder="Mongo mekan id" />
-
-        <label>Yeni Ad</label>
-        <input id="updateEstablishmentName" placeholder="Yeni isim" />
-
-        <label>Yeni Adres</label>
-        <input id="updateEstablishmentAddress" placeholder="Yeni adres" />
-
-        <div class="btn-row">
-          <button onclick="updateEstablishment()">Güncelle</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>Mekân Sil</h3>
-        <label>Mekân ID</label>
-        <input id="deleteEstablishmentId" placeholder="Mongo mekan id" />
-
-        <div class="btn-row">
-          <button class="danger" onclick="deleteEstablishment()">Mekânı Sil</button>
-        </div>
-      </div>
+      <div id="establishmentList" class="list-box"></div>
     </div>
 
     <div id="status" class="status"></div>
