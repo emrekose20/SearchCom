@@ -13,13 +13,20 @@
       <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
     </div>
 
+    <div class="info-box">
+      Giriş yaptıysan kullanıcı ID alanlarını boş bırakabilirsin.
+    </div>
+
     <div class="grid">
       <div class="card">
         <h3>Favoriye Ekle</h3>
+
         <label>Kullanıcı ID</label>
-        <input id="favoriteUserId" placeholder="Mongo kullanıcı id" />
-        <label>Mekan ID</label>
+        <input id="favoriteUserId" placeholder="Boş bırakılabilir" />
+
+        <label>Mekân ID</label>
         <input id="favoriteEstablishmentId" placeholder="Mongo mekan id" />
+
         <div class="btn-row">
           <button onclick="addFavorite()">Favoriye Ekle</button>
         </div>
@@ -27,17 +34,23 @@
 
       <div class="card">
         <h3>Favorileri Getir</h3>
+
         <label>Kullanıcı ID</label>
-        <input id="getFavoritesUserId" placeholder="Mongo kullanıcı id" />
+        <input id="getFavoritesUserId" placeholder="Boş bırakılabilir" />
+
         <div class="btn-row">
-          <button onclick="getFavorites()">Favorileri Listele</button>
+          <button class="secondary" onclick="getFavorites()">Favorileri Listele</button>
         </div>
+
+        <div id="favoriteList" class="list-box"></div>
       </div>
 
       <div class="card">
         <h3>Favori Sil</h3>
+
         <label>Favori ID</label>
         <input id="deleteFavoriteId" placeholder="Mongo favori id" />
+
         <div class="btn-row">
           <button class="danger" onclick="deleteFavorite()">Favoriden Çıkar</button>
         </div>
@@ -45,21 +58,20 @@
 
       <div class="card">
         <h3>Klasör Güncelle</h3>
+
         <label>Klasör ID</label>
         <input id="folderId" placeholder="Mongo klasör id" />
+
         <label>Yeni Klasör Adı</label>
         <input id="folderName" placeholder="Hafta sonu mekanları" />
+
         <div class="btn-row">
           <button onclick="updateFolder()">Klasörü Güncelle</button>
         </div>
       </div>
     </div>
 
-    <div class="result-card">
-      <h3>Sonuç</h3>
-      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
-      <div id="status" class="status"></div>
-    </div>
+    <div id="status" class="status"></div>
   </div>
 
   <script src="js/favorites.js"></script>

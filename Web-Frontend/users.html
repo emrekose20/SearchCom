@@ -13,15 +13,38 @@
       <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
     </div>
 
+    <div id="activeUserBox" class="user-pill hidden"></div>
+
     <div class="grid">
       <div class="card">
-        <h3>Kayıt Ol</h3>
-        <label>İsim</label>
-        <input id="registerName" placeholder="Ali Veli" />
+        <h3>Giriş Yap</h3>
+        <p>Var olan hesabınla giriş yap.</p>
+
         <label>Email</label>
-        <input id="registerEmail" placeholder="ali@test.com" />
+        <input id="loginEmail" type="email" placeholder="ornek@mail.com" />
+
         <label>Şifre</label>
-        <input id="registerPassword" placeholder="1234" />
+        <input id="loginPassword" type="password" placeholder="Şifreni gir" />
+
+        <div class="btn-row">
+          <button onclick="loginUser()">Giriş Yap</button>
+          <button class="secondary" onclick="logoutUser()">Çıkış Yap</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kayıt Ol</h3>
+        <p>Yeni bir SearchCom hesabı oluştur.</p>
+
+        <label>İsim</label>
+        <input id="registerName" placeholder="Ad Soyad" />
+
+        <label>Email</label>
+        <input id="registerEmail" type="email" placeholder="ornek@mail.com" />
+
+        <label>Şifre</label>
+        <input id="registerPassword" type="password" placeholder="Şifre oluştur" />
+
         <div class="btn-row">
           <button onclick="registerUser()">Kullanıcı Oluştur</button>
         </div>
@@ -29,21 +52,29 @@
 
       <div class="card">
         <h3>Kullanıcı Getir</h3>
+        <p>ID ile kullanıcı bilgisi getir.</p>
+
         <label>Kullanıcı ID</label>
         <input id="getUserId" placeholder="Mongo kullanıcı id" />
+
         <div class="btn-row">
-          <button onclick="getUser()">Bilgileri Getir</button>
+          <button class="secondary" onclick="getUser()">Bilgileri Getir</button>
         </div>
       </div>
 
       <div class="card">
-        <h3>Kullanıcı Güncelle</h3>
+        <h3>Profil Güncelle</h3>
+        <p>Giriş yapan kullanıcıyı ya da ID ile seçtiğin kullanıcıyı güncelle.</p>
+
         <label>Kullanıcı ID</label>
-        <input id="updateUserId" placeholder="Mongo kullanıcı id" />
+        <input id="updateUserId" placeholder="Boş bırakırsan giriş yapan kullanıcı kullanılır" />
+
         <label>Yeni İsim</label>
         <input id="updateUserName" placeholder="Yeni isim" />
+
         <label>Yeni Şifre</label>
-        <input id="updateUserPassword" placeholder="Yeni şifre" />
+        <input id="updateUserPassword" type="password" placeholder="Yeni şifre" />
+
         <div class="btn-row">
           <button onclick="updateUser()">Güncelle</button>
         </div>
@@ -51,19 +82,18 @@
 
       <div class="card">
         <h3>Kullanıcı Sil</h3>
+        <p>Giriş yapan kullanıcıyı ya da verdiğin ID’yi sil.</p>
+
         <label>Kullanıcı ID</label>
-        <input id="deleteUserId" placeholder="Mongo kullanıcı id" />
+        <input id="deleteUserId" placeholder="Boş bırakırsan giriş yapan kullanıcı kullanılır" />
+
         <div class="btn-row">
           <button class="danger" onclick="deleteUser()">Kullanıcıyı Sil</button>
         </div>
       </div>
     </div>
 
-    <div class="result-card">
-      <h3>Sonuç</h3>
-      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
-      <div id="status" class="status"></div>
-    </div>
+    <div id="status" class="status"></div>
   </div>
 
   <script src="js/users.js"></script>

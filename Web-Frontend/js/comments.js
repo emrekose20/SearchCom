@@ -1,18 +1,23 @@
 const API_BASE = "https://searchcom.onrender.com/api";
 
-function showResult(data, ok = true) {
-  document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+function setStatus(message, type = "success") {
   const status = document.getElementById("status");
-  status.textContent = ok ? "İşlem başarılı." : "İşlem sırasında hata oluştu.";
-  status.className = ok ? "status success" : "status error";
+  status.textContent = message;
+  status.className = `status ${type}`;
+}
+
+function getStoredUser() {
+  const raw = localStorage.getItem("searchcomUser");
+  return raw ? JSON.parse(raw) : null;
 }
 
 async function addComment() {
   try {
+    const storedUser = getStoredUser();
     const body = {
-      userId: document.getElementById("commentUserId").value,
-      establishmentId: document.getElementById("commentEstablishmentId").value,
-      content: document.getElementById("commentContent").value
+      userId: document.getElementById("commentUserId").value.trim() || (storedUser ? storedUser._id : ""),
+      establishmentId: document.getElementById("commentEstablishmentId").value.trim(),
+      content: document.getElementById("commentContent").value.trim()
     };
 
     const res = await fetch(`${API_BASE}/comments`, {
@@ -21,21 +26,38 @@ async function addComment() {
       body: JSON.stringify(body)
     });
 
-    showResult(await res.json(), res.ok);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setStatus(data.message || "Yorum eklenemedi.", "error");
+      return;
+    }
+
+    setStatus("Yorum başarıyla eklendi.", "success");
+    document.getElementById("commentContent").value = "";
   } catch (error) {
-    showResult({ error: error.message }, false);
+    setStatus(error.message, "error");
   }
 }
 
 async function deleteComment() {
   try {
-    const id = document.getElementById("deleteCommentId").value;
+    const id = document.getElementById("deleteCommentId").value.trim();
+
     const res = await fetch(`${API_BASE}/comments/${id}`, {
       method: "DELETE"
     });
 
-    showResult(await res.json(), res.ok);
+    const data = await res.json();
+
+    if (!res.ok) {
+      setStatus(data.message || "Yorum silinemedi.", "error");
+      return;
+    }
+
+    setStatus(data.message || "Yorum silindi.", "success");
+    document.getElementById("deleteCommentId").value = "";
   } catch (error) {
-    showResult({ error: error.message }, false);
+    setStatus(error.message, "error");
   }
 }

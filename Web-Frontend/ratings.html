@@ -13,15 +13,23 @@
       <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
     </div>
 
+    <div class="info-box">
+      Giriş yaptıysan kullanıcı ID alanını boş bırakabilirsin.
+    </div>
+
     <div class="grid">
       <div class="card">
         <h3>Puan Ver</h3>
+
         <label>Kullanıcı ID</label>
-        <input id="ratingUserId" placeholder="Mongo kullanıcı id" />
-        <label>Mekan ID</label>
+        <input id="ratingUserId" placeholder="Boş bırakılabilir" />
+
+        <label>Mekân ID</label>
         <input id="ratingEstablishmentId" placeholder="Mongo mekan id" />
+
         <label>Puan</label>
         <input id="ratingScore" type="number" min="1" max="5" placeholder="5" />
+
         <div class="btn-row">
           <button onclick="addRating()">Puan Gönder</button>
         </div>
@@ -29,30 +37,33 @@
 
       <div class="card">
         <h3>Puanları Listele</h3>
-        <label>Mekan ID</label>
+
+        <label>Mekân ID</label>
         <input id="getRatingsEstablishmentId" placeholder="Mongo mekan id" />
+
         <div class="btn-row">
-          <button onclick="getRatings()">Puanları Getir</button>
+          <button class="secondary" onclick="getRatings()">Puanları Getir</button>
         </div>
+
+        <div id="ratingInfo" class="list-box"></div>
       </div>
 
       <div class="card">
         <h3>Puan Güncelle</h3>
+
         <label>Puan ID</label>
         <input id="updateRatingId" placeholder="Mongo puan id" />
+
         <label>Yeni Puan</label>
         <input id="updateRatingScore" type="number" min="1" max="5" placeholder="3" />
+
         <div class="btn-row">
           <button onclick="updateRating()">Puanı Güncelle</button>
         </div>
       </div>
     </div>
 
-    <div class="result-card">
-      <h3>Sonuç</h3>
-      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
-      <div id="status" class="status"></div>
-    </div>
+    <div id="status" class="status"></div>
   </div>
 
   <script src="js/ratings.js"></script>

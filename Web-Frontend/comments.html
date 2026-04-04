@@ -13,15 +13,23 @@
       <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
     </div>
 
+    <div class="info-box">
+      Giriş yaptıysan kullanıcı ID alanını boş bırakabilirsin. Sistem kayıtlı kullanıcıyı kullanır.
+    </div>
+
     <div class="grid">
       <div class="card">
         <h3>Yorum Ekle</h3>
+
         <label>Kullanıcı ID</label>
-        <input id="commentUserId" placeholder="Mongo kullanıcı id" />
-        <label>Mekan ID</label>
+        <input id="commentUserId" placeholder="Boş bırakılabilir" />
+
+        <label>Mekân ID</label>
         <input id="commentEstablishmentId" placeholder="Mongo mekan id" />
+
         <label>Yorum</label>
-        <textarea id="commentContent" placeholder="Harika mekan"></textarea>
+        <textarea id="commentContent" placeholder="Bu mekanın kahvesi çok iyiydi."></textarea>
+
         <div class="btn-row">
           <button onclick="addComment()">Yorumu Gönder</button>
         </div>
@@ -29,19 +37,17 @@
 
       <div class="card">
         <h3>Yorum Sil</h3>
+
         <label>Yorum ID</label>
         <input id="deleteCommentId" placeholder="Mongo yorum id" />
+
         <div class="btn-row">
           <button class="danger" onclick="deleteComment()">Yorumu Sil</button>
         </div>
       </div>
     </div>
 
-    <div class="result-card">
-      <h3>Sonuç</h3>
-      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
-      <div id="status" class="status"></div>
-    </div>
+    <div id="status" class="status"></div>
   </div>
 
   <script src="js/comments.js"></script>
