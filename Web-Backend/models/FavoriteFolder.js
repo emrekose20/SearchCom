@@ -1,22 +1,21 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const mongoose = require("mongoose");
 
-const FavoriteFolder = sequelize.define("FavoriteFolder", {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+const favoriteFolderSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+    folderName: {
+      type: String,
+      required: true,
+      trim: true
+    }
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  folderName: {
-    type: DataTypes.STRING,
-    allowNull: false
+  {
+    timestamps: true
   }
-}, {
-  tableName: "favorite_folders"
-});
+);
 
-module.exports = FavoriteFolder;
+module.exports = mongoose.model("FavoriteFolder", favoriteFolderSchema);
