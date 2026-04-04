@@ -1,22 +1,35 @@
-const { Comment } = require("../models");
+const { Comment, Establishment } = require("../models");
 
 exports.createComment = async (req, res) => {
   try {
-    const { userId, establishmentId, content } = req.body;
+    const { userId, establishmentName, content } = req.body;
 
-    if (!userId || !establishmentId || !content) {
+    if (!userId || !establishmentName || !content) {
       return res.status(400).json({
-        message: "userId, establishmentId ve content zorunludur."
+        message: "userId, establishmentName ve content zorunludur."
+      });
+    }
+
+    const establishment = await Establishment.findOne({
+      name: establishmentName.trim()
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Bu isimde mekan bulunamadı."
       });
     }
 
     const comment = await Comment.create({
       userId,
-      establishmentId,
+      establishmentId: establishment._id,
       content
     });
 
-    return res.status(201).json(comment);
+    return res.status(201).json({
+      message: "Yorum oluşturuldu.",
+      comment
+    });
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",
@@ -30,10 +43,35 @@ exports.deleteComment = async (req, res) => {
     const comment = await Comment.findByIdAndDelete(req.params.id);
 
     if (!comment) {
-      return res.status(404).json({ message: "Yorum bulunamadı." });
+      return res.status(404).json({
+        message: "Yorum bulunamadı."
+      });
     }
 
-    return res.status(200).json({ message: "Yorum başarıyla kaldırıldı." });
+    return res.status(200).json({
+      message: "Yorum silindi."
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
+  }
+};
+
+exports.getMyComments = async (req, res) => {
+  try {
+    const comments = await Comment.find({ userId: req.params.userId })
+      .sort({ createdAt: -1 })
+      .populate("establishmentId", "name");
+
+    const formattedComments = comments.map((comment) => ({
+      _id: comment._id,
+      content: comment.content,
+      establishmentName: comment.establishmentId?.name || "Mekan bulunamadı"
+    }));
+
+    return res.status(200).json(formattedComments);
   } catch (error) {
     return res.status(500).json({
       message: "Sunucu hatası",
