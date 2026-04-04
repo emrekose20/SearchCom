@@ -1,18 +1,27 @@
-<h2>Favori</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mekan</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
  
-<input id="userId" placeholder="userId">
-<input id="establishmentId" placeholder="establishmentId">
+<h2>Mekan İşlemleri</h2>
  
-<button onclick="addFavorite()">Ekle</button>
-<button onclick="getFavorites()">Listele</button>
+<input id="name" placeholder="Mekan Adı">
+<input id="address" placeholder="Adres">
  
-<input id="favoriteId" placeholder="favori id">
-<button onclick="deleteFavorite()">Sil</button>
+<button onclick="createEstablishment()">Ekle</button>
  
-<input id="folderId" placeholder="folder id">
-<input id="folderName" placeholder="folder name">
-<button onclick="updateFolder()">Güncelle</button>
+<hr>
+ 
+<input id="id" placeholder="Mekan ID">
+<button onclick="getEstablishments()">Listele</button>
+<button onclick="updateEstablishment()">Güncelle</button>
+<button onclick="deleteEstablishment()">Sil</button>
  
 <pre id="result"></pre>
  
-<script src="js/favorites.js"></script>
+<script src="js/establishments.js"></script>
+</body>
+</html>
