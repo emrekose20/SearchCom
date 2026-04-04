@@ -357,6 +357,43 @@ button.danger {
   color: #0f766e;
 }
 
+.stars-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.star {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.star.full {
+  color: #fbbf24;
+}
+
+.star.empty {
+  color: #cbd5e1;
+}
+
+.star.half {
+  position: relative;
+  display: inline-block;
+  color: #cbd5e1;
+}
+
+.star.half::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  overflow: hidden;
+  color: #fbbf24;
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: 26px;
@@ -394,39 +431,4 @@ button.danger {
     width: 100%;
     text-align: center;
   }
-}
-.stars-row {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  margin-top: 6px;
-}
-
-.star {
-  font-size: 28px;
-  line-height: 1;
-}
-
-.star.full {
-  color: #fbbf24;
-}
-
-.star.empty {
-  color: #cbd5e1;
-}
-
-.star.half {
-  position: relative;
-  display: inline-block;
-  color: #cbd5e1;
-}
-
-.star.half::before {
-  content: "★";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--fill, 50%);
-  overflow: hidden;
-  color: #fbbf24;
 }
