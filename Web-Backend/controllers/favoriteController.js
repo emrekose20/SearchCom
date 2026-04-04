@@ -18,36 +18,31 @@ exports.createFavorite = async (req, res) => {
 
     return res.status(201).json(favorite);
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
 
 exports.getFavoritesByUser = async (req, res) => {
   try {
-    const { userId } = req.params;
-
-    const favorites = await Favorite.findAll({
-      where: { userId }
+    const favorites = await Favorite.find({
+      userId: req.params.userId
     });
 
     return res.status(200).json(favorites);
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
 
 exports.updateFavoriteFolder = async (req, res) => {
   try {
-    const { id } = req.params;
     const { folderName } = req.body;
-
-    const folder = await FavoriteFolder.findByPk(id);
-
-    if (!folder) {
-      return res.status(404).json({
-        message: "Favori klasörü bulunamadı."
-      });
-    }
 
     if (!folderName) {
       return res.status(400).json({
@@ -55,23 +50,33 @@ exports.updateFavoriteFolder = async (req, res) => {
       });
     }
 
-    folder.folderName = folderName;
-    await folder.save();
+    const folder = await FavoriteFolder.findByIdAndUpdate(
+      req.params.id,
+      { folderName },
+      { new: true, runValidators: true }
+    );
+
+    if (!folder) {
+      return res.status(404).json({
+        message: "Favori klasörü bulunamadı."
+      });
+    }
 
     return res.status(200).json({
       message: "Favori listesi başlığı güncellendi.",
       folder
     });
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
 
 exports.deleteFavorite = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    const favorite = await Favorite.findByPk(id);
+    const favorite = await Favorite.findByIdAndDelete(req.params.id);
 
     if (!favorite) {
       return res.status(404).json({
@@ -79,12 +84,13 @@ exports.deleteFavorite = async (req, res) => {
       });
     }
 
-    await favorite.destroy();
-
     return res.status(200).json({
       message: "Mekan favorilerden çıkarıldı."
     });
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
