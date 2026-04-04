@@ -64,15 +64,11 @@
     - **API Metodu:** `GET /api/favorites/{userId}`
     - **Açıklama:** Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
 
-16. **Favori Listesi Başlığını Güncelleme**
-    - **API Metodu:** `PUT /api/favorites/folders/{id}`
-    - **Açıklama:** Kullanıcının oluşturduğu favori koleksiyonlarının ismini (Örn: "Hafta sonu gidilecek yerler") düzenlemesine yardımcı olur.
-
-17. **Mekanı Favorilerden Çıkarma**
+16. **Mekanı Favorilerden Çıkarma**
     - **API Metodu:** `DELETE /api/favorites/{id}`
     - **Açıklama:** Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
 
-18. **Mekana Yorum Ekleme**
+17. **Mekana Yorum Ekleme**
     - **API Metodu:** `POST /api/comments`
     - **Açıklama:** Kullanıcının bir işletme hakkında yeni bir yorum veya değerlendirme eklemesini sağlar.
 # Gereksinim Dağılımları
