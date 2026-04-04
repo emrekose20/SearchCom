@@ -1,29 +1,69 @@
-const API = "https://searchcom.onrender.com/api";
- 
+const API_BASE = "https://searchcom.onrender.com/api";
+
+function showResult(data, ok = true) {
+  document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+  const status = document.getElementById("status");
+  status.textContent = ok ? "İşlem başarılı." : "İşlem sırasında hata oluştu.";
+  status.className = ok ? "status success" : "status error";
+}
+
 async function createEstablishment() {
-  await fetch(`${API}/establishments`, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({name:name.value,address:address.value})
-  });
-  alert("Eklendi");
+  try {
+    const body = {
+      name: document.getElementById("createEstablishmentName").value,
+      address: document.getElementById("createEstablishmentAddress").value
+    };
+
+    const res = await fetch(`${API_BASE}/establishments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
- 
+
 async function getEstablishments() {
-  const res = await fetch(`${API}/establishments`);
-  result.innerText = JSON.stringify(await res.json(), null, 2);
+  try {
+    const res = await fetch(`${API_BASE}/establishments`);
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
- 
+
 async function updateEstablishment() {
-  await fetch(`${API}/establishments/${id.value}`, {
-    method:"PUT",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({name:name.value,address:address.value})
-  });
-  alert("Güncellendi");
+  try {
+    const id = document.getElementById("updateEstablishmentId").value;
+    const body = {
+      name: document.getElementById("updateEstablishmentName").value,
+      address: document.getElementById("updateEstablishmentAddress").value
+    };
+
+    const res = await fetch(`${API_BASE}/establishments/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
- 
+
 async function deleteEstablishment() {
-  await fetch(`${API}/establishments/${id.value}`, {method:"DELETE"});
-  alert("Silindi");
+  try {
+    const id = document.getElementById("deleteEstablishmentId").value;
+    const res = await fetch(`${API_BASE}/establishments/${id}`, {
+      method: "DELETE"
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }

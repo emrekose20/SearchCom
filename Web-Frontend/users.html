@@ -1,28 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Kullanıcı</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kullanıcı İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<h2>Kullanıcı İşlemleri</h2>
- 
-<input id="name" placeholder="İsim">
-<input id="email" placeholder="Email">
-<input id="password" placeholder="Şifre">
- 
-<button onclick="registerUser()">Kayıt Ol</button>
- 
-<hr>
- 
-<input id="userId" placeholder="User ID">
-<button onclick="getUser()">Getir</button>
-<button onclick="updateUser()">Güncelle</button>
-<button onclick="deleteUser()">Sil</button>
- 
-<pre id="result"></pre>
- 
-<script src="js/users.js"></script>
+  <div class="container">
+    <div class="topbar">
+      <h2>Kullanıcı İşlemleri</h2>
+      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Kayıt Ol</h3>
+        <label>İsim</label>
+        <input id="registerName" placeholder="Ali Veli" />
+        <label>Email</label>
+        <input id="registerEmail" placeholder="ali@test.com" />
+        <label>Şifre</label>
+        <input id="registerPassword" placeholder="1234" />
+        <div class="btn-row">
+          <button onclick="registerUser()">Kullanıcı Oluştur</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kullanıcı Getir</h3>
+        <label>Kullanıcı ID</label>
+        <input id="getUserId" placeholder="Mongo kullanıcı id" />
+        <div class="btn-row">
+          <button onclick="getUser()">Bilgileri Getir</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kullanıcı Güncelle</h3>
+        <label>Kullanıcı ID</label>
+        <input id="updateUserId" placeholder="Mongo kullanıcı id" />
+        <label>Yeni İsim</label>
+        <input id="updateUserName" placeholder="Yeni isim" />
+        <label>Yeni Şifre</label>
+        <input id="updateUserPassword" placeholder="Yeni şifre" />
+        <div class="btn-row">
+          <button onclick="updateUser()">Güncelle</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kullanıcı Sil</h3>
+        <label>Kullanıcı ID</label>
+        <input id="deleteUserId" placeholder="Mongo kullanıcı id" />
+        <div class="btn-row">
+          <button class="danger" onclick="deleteUser()">Kullanıcıyı Sil</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <h3>Sonuç</h3>
+      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+
+  <script src="js/users.js"></script>
 </body>
 </html>

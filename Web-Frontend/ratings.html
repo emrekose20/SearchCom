@@ -1,27 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <title>Puan</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puan İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="container">
+    <div class="topbar">
+      <h2>Puan İşlemleri</h2>
+      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+    </div>
 
-<h2>Puan İşlemleri</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Puan Ver</h3>
+        <label>Kullanıcı ID</label>
+        <input id="ratingUserId" placeholder="Mongo kullanıcı id" />
+        <label>Mekan ID</label>
+        <input id="ratingEstablishmentId" placeholder="Mongo mekan id" />
+        <label>Puan</label>
+        <input id="ratingScore" type="number" min="1" max="5" placeholder="5" />
+        <div class="btn-row">
+          <button onclick="addRating()">Puan Gönder</button>
+        </div>
+      </div>
 
-<input id="userId" placeholder="User ID">
-<input id="establishmentId" placeholder="Mekan ID">
-<input id="score" placeholder="Puan (1-5)">
+      <div class="card">
+        <h3>Puanları Listele</h3>
+        <label>Mekan ID</label>
+        <input id="getRatingsEstablishmentId" placeholder="Mongo mekan id" />
+        <div class="btn-row">
+          <button onclick="getRatings()">Puanları Getir</button>
+        </div>
+      </div>
 
-<button onclick="addRating()">Puan Ver</button>
-<button onclick="getRatings()">Listele</button>
+      <div class="card">
+        <h3>Puan Güncelle</h3>
+        <label>Puan ID</label>
+        <input id="updateRatingId" placeholder="Mongo puan id" />
+        <label>Yeni Puan</label>
+        <input id="updateRatingScore" type="number" min="1" max="5" placeholder="3" />
+        <div class="btn-row">
+          <button onclick="updateRating()">Puanı Güncelle</button>
+        </div>
+      </div>
+    </div>
 
-<hr>
+    <div class="result-card">
+      <h3>Sonuç</h3>
+      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
 
-<input id="ratingId" placeholder="Puan ID">
-<button onclick="updateRating()">Güncelle</button>
-
-<pre id="result"></pre>
-
-<script src="js/ratings.js"></script>
+  <script src="js/ratings.js"></script>
 </body>
 </html>

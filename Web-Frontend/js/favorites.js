@@ -1,34 +1,69 @@
-const API = "https://searchcom.onrender.com/api";
+const API_BASE = "https://searchcom.onrender.com/api";
+
+function showResult(data, ok = true) {
+  document.getElementById("result").textContent = JSON.stringify(data, null, 2);
+  const status = document.getElementById("status");
+  status.textContent = ok ? "İşlem başarılı." : "İşlem sırasında hata oluştu.";
+  status.className = ok ? "status success" : "status error";
+}
 
 async function addFavorite() {
-  await fetch(`${API}/favorites`, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({
-      userId:userId.value,
-      establishmentId:establishmentId.value
-    })
-  });
-  alert("Eklendi");
+  try {
+    const body = {
+      userId: document.getElementById("favoriteUserId").value,
+      establishmentId: document.getElementById("favoriteEstablishmentId").value
+    };
+
+    const res = await fetch(`${API_BASE}/favorites`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
 
 async function getFavorites() {
-  const res = await fetch(`${API}/favorites/${userId.value}`);
-  result.innerText = JSON.stringify(await res.json(), null, 2);
+  try {
+    const userId = document.getElementById("getFavoritesUserId").value;
+    const res = await fetch(`${API_BASE}/favorites/${userId}`);
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
 
 async function deleteFavorite() {
-  await fetch(`${API}/favorites/${favoriteId.value}`, {
-    method:"DELETE"
-  });
-  alert("Silindi");
+  try {
+    const id = document.getElementById("deleteFavoriteId").value;
+    const res = await fetch(`${API_BASE}/favorites/${id}`, {
+      method: "DELETE"
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }
 
 async function updateFolder() {
-  await fetch(`${API}/favorites/folders/${folderId.value}`, {
-    method:"PUT",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({folderName:folderName.value})
-  });
-  alert("Güncellendi");
+  try {
+    const id = document.getElementById("folderId").value;
+    const body = {
+      folderName: document.getElementById("folderName").value
+    };
+
+    const res = await fetch(`${API_BASE}/favorites/folders/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    showResult(await res.json(), res.ok);
+  } catch (error) {
+    showResult({ error: error.message }, false);
+  }
 }

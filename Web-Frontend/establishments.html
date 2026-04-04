@@ -1,27 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Mekan</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mekan İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<h2>Mekan İşlemleri</h2>
- 
-<input id="name" placeholder="Mekan Adı">
-<input id="address" placeholder="Adres">
- 
-<button onclick="createEstablishment()">Ekle</button>
- 
-<hr>
- 
-<input id="id" placeholder="Mekan ID">
-<button onclick="getEstablishments()">Listele</button>
-<button onclick="updateEstablishment()">Güncelle</button>
-<button onclick="deleteEstablishment()">Sil</button>
- 
-<pre id="result"></pre>
- 
-<script src="js/establishments.js"></script>
+  <div class="container">
+    <div class="topbar">
+      <h2>Mekan İşlemleri</h2>
+      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Mekan Oluştur</h3>
+        <label>Mekan Adı</label>
+        <input id="createEstablishmentName" placeholder="Kafe İstanbul" />
+        <label>Adres</label>
+        <input id="createEstablishmentAddress" placeholder="Kadıköy / İstanbul" />
+        <div class="btn-row">
+          <button onclick="createEstablishment()">Mekan Ekle</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Tüm Mekanları Getir</h3>
+        <p>Kayıtlı mekan listesini çeker.</p>
+        <div class="btn-row">
+          <button onclick="getEstablishments()">Listele</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mekan Güncelle</h3>
+        <label>Mekan ID</label>
+        <input id="updateEstablishmentId" placeholder="Mongo mekan id" />
+        <label>Yeni Ad</label>
+        <input id="updateEstablishmentName" placeholder="Yeni isim" />
+        <label>Yeni Adres</label>
+        <input id="updateEstablishmentAddress" placeholder="Yeni adres" />
+        <div class="btn-row">
+          <button onclick="updateEstablishment()">Güncelle</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Mekan Sil</h3>
+        <label>Mekan ID</label>
+        <input id="deleteEstablishmentId" placeholder="Mongo mekan id" />
+        <div class="btn-row">
+          <button class="danger" onclick="deleteEstablishment()">Mekanı Sil</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card">
+      <h3>Sonuç</h3>
+      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
+
+  <script src="js/establishments.js"></script>
 </body>
 </html>

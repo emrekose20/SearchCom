@@ -1,32 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <title>Favori</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favori İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="container">
+    <div class="topbar">
+      <h2>Favori İşlemleri</h2>
+      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+    </div>
 
-<h2>Favori İşlemleri</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Favoriye Ekle</h3>
+        <label>Kullanıcı ID</label>
+        <input id="favoriteUserId" placeholder="Mongo kullanıcı id" />
+        <label>Mekan ID</label>
+        <input id="favoriteEstablishmentId" placeholder="Mongo mekan id" />
+        <div class="btn-row">
+          <button onclick="addFavorite()">Favoriye Ekle</button>
+        </div>
+      </div>
 
-<input id="userId" placeholder="User ID">
-<input id="establishmentId" placeholder="Mekan ID">
+      <div class="card">
+        <h3>Favorileri Getir</h3>
+        <label>Kullanıcı ID</label>
+        <input id="getFavoritesUserId" placeholder="Mongo kullanıcı id" />
+        <div class="btn-row">
+          <button onclick="getFavorites()">Favorileri Listele</button>
+        </div>
+      </div>
 
-<button onclick="addFavorite()">Favori Ekle</button>
-<button onclick="getFavorites()">Listele</button>
+      <div class="card">
+        <h3>Favori Sil</h3>
+        <label>Favori ID</label>
+        <input id="deleteFavoriteId" placeholder="Mongo favori id" />
+        <div class="btn-row">
+          <button class="danger" onclick="deleteFavorite()">Favoriden Çıkar</button>
+        </div>
+      </div>
 
-<hr>
+      <div class="card">
+        <h3>Klasör Güncelle</h3>
+        <label>Klasör ID</label>
+        <input id="folderId" placeholder="Mongo klasör id" />
+        <label>Yeni Klasör Adı</label>
+        <input id="folderName" placeholder="Hafta sonu mekanları" />
+        <div class="btn-row">
+          <button onclick="updateFolder()">Klasörü Güncelle</button>
+        </div>
+      </div>
+    </div>
 
-<input id="favoriteId" placeholder="Favori ID">
-<button onclick="deleteFavorite()">Sil</button>
+    <div class="result-card">
+      <h3>Sonuç</h3>
+      <div id="result" class="result-box">Henüz işlem yapılmadı.</div>
+      <div id="status" class="status"></div>
+    </div>
+  </div>
 
-<hr>
-
-<input id="folderId" placeholder="Folder ID">
-<input id="folderName" placeholder="Folder Name">
-<button onclick="updateFolder()">Güncelle</button>
-
-<pre id="result"></pre>
-
-<script src="js/favorites.js"></script>
+  <script src="js/favorites.js"></script>
 </body>
 </html>
