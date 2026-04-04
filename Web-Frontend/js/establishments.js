@@ -11,37 +11,44 @@ function getStoredUser() {
   return raw ? JSON.parse(raw) : null;
 }
 
-async function createEstablishmentCard(item) {
-  const commentsRes = await fetch(
-    `${API_BASE}/comments/establishment/${encodeURIComponent(item.name)}`
-  );
-  const commentsData = await commentsRes.json();
+function createStars(averageScore) {
+  const fullStars = Math.floor(averageScore);
+  const decimalPart = averageScore - fullStars;
 
-  const ratingsRes = await fetch(
-    `${API_BASE}/ratings/establishment/${encodeURIComponent(item.name)}`
-  );
-  const ratingsData = await ratingsRes.json();
+  let starsHtml = "";
 
-  const div = document.createElement("div");
-  div.className = "list-item";
+  for (let i = 0; i < fullStars; i++) {
+    starsHtml += `<span class="star full">★</span>`;
+  }
 
-  const commentsHtml = Array.isArray(commentsData) && commentsData.length
-    ? commentsData.map(comment => `
-        <div class="comment-block">
-          <p><strong>Kullanıcı:</strong> ${comment.userName}</p>
-          <p><strong>Yorum:</strong> ${comment.content}</p>
-          <div class="score-line">Verilen Puan: ${Number(ratingsData.averageScore || 0).toFixed(1)}</div>
-        </div>
-      `).join("")
-    : `<div class="comment-block"><p>Henüz yorum yok.</p><div class="score-line">Verilen Puan: ${Number(ratingsData.averageScore || 0).toFixed(1)}</div></div>`;
+  if (decimalPart > 0) {
+    if (decimalPart < 0.5) {
+      starsHtml += `<span class="star half" style="--fill: ${decimalPart * 100}%;">★</span>`;
+    } else {
+      starsHtml += `<span class="star half" style="--fill: 50%;">★</span>`;
+    }
+  }
 
-  div.innerHTML = `
-    <h4>${item.name}</h4>
-    <p>${item.address}</p>
-    ${commentsHtml}
-  `;
+  const shownStars = fullStars + (decimalPart > 0 ? 1 : 0);
+  const emptyStars = 5 - shownStars;
 
-  return div;
+  for (let i = 0; i < emptyStars; i++) {
+    starsHtml += `<span class="star empty">★</span>`;
+  }
+
+  return starsHtml;
+}
+
+async function getAverageRating(establishmentId) {
+  try {
+    const res = await fetch(`${API_BASE}/ratings/establishment/${establishmentId}`);
+    const data = await res.json();
+
+    if (!res.ok) return 0;
+    return Number(data.averageScore || 0);
+  } catch (error) {
+    return 0;
+  }
 }
 
 async function renderEstablishments(items) {
@@ -49,13 +56,23 @@ async function renderEstablishments(items) {
   list.innerHTML = "";
 
   if (!items.length) {
-    list.innerHTML = `<div class="info-box">Henüz kayıtlı mekân yok.</div>`;
+    list.innerHTML = `<div class="info-box">Henüz kayıtlı mekan yok.</div>`;
     return;
   }
 
   for (const item of items) {
-    const card = await createEstablishmentCard(item);
-    list.appendChild(card);
+    const averageScore = await getAverageRating(item._id);
+
+    const div = document.createElement("div");
+    div.className = "list-item";
+    div.innerHTML = `
+      <h4>${item.name}</h4>
+      <p><strong>Ortalama Puan:</strong></p>
+      <div class="stars-row">
+        ${createStars(averageScore)}
+      </div>
+    `;
+    list.appendChild(div);
   }
 }
 
@@ -65,12 +82,12 @@ async function getEstablishments() {
     const data = await res.json();
 
     if (!res.ok) {
-      setStatus(data.message || "Mekânlar getirilemedi.", "error");
+      setStatus(data.message || "Mekanlar getirilemedi.", "error");
       return;
     }
 
     await renderEstablishments(data);
-    setStatus(`${data.length} mekân listelendi.`, "success");
+    setStatus(`${data.length} mekan listelendi.`, "success");
   } catch (error) {
     setStatus(error.message, "error");
   }

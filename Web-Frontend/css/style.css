@@ -395,3 +395,38 @@ button.danger {
     text-align: center;
   }
 }
+.stars-row {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.star {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.star.full {
+  color: #fbbf24;
+}
+
+.star.empty {
+  color: #cbd5e1;
+}
+
+.star.half {
+  position: relative;
+  display: inline-block;
+  color: #cbd5e1;
+}
+
+.star.half::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--fill, 50%);
+  overflow: hidden;
+  color: #fbbf24;
+}
