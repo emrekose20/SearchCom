@@ -65,6 +65,38 @@ exports.getMyRatings = async (req, res) => {
   }
 };
 
+exports.getAverageByEstablishment = async (req, res) => {
+  try {
+    const establishment = await Establishment.findOne({
+      name: req.params.name
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Mekan bulunamadı."
+      });
+    }
+
+    const ratings = await Rating.find({
+      establishmentId: establishment._id
+    });
+
+    const count = ratings.length;
+    const total = ratings.reduce((sum, item) => sum + item.score, 0);
+    const average = count > 0 ? total / count : 0;
+
+    return res.status(200).json({
+      establishmentName: establishment.name,
+      averageScore: average
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
+  }
+};
+
 exports.updateRating = async (req, res) => {
   try {
     const { score } = req.body;

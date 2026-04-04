@@ -11,7 +11,40 @@ function getStoredUser() {
   return raw ? JSON.parse(raw) : null;
 }
 
-function renderEstablishments(items) {
+async function createEstablishmentCard(item) {
+  const commentsRes = await fetch(
+    `${API_BASE}/comments/establishment/${encodeURIComponent(item.name)}`
+  );
+  const commentsData = await commentsRes.json();
+
+  const ratingsRes = await fetch(
+    `${API_BASE}/ratings/establishment/${encodeURIComponent(item.name)}`
+  );
+  const ratingsData = await ratingsRes.json();
+
+  const div = document.createElement("div");
+  div.className = "list-item";
+
+  const commentsHtml = Array.isArray(commentsData) && commentsData.length
+    ? commentsData.map(comment => `
+        <div class="comment-block">
+          <p><strong>Kullanıcı:</strong> ${comment.userName}</p>
+          <p><strong>Yorum:</strong> ${comment.content}</p>
+          <div class="score-line">Verilen Puan: ${Number(ratingsData.averageScore || 0).toFixed(1)}</div>
+        </div>
+      `).join("")
+    : `<div class="comment-block"><p>Henüz yorum yok.</p><div class="score-line">Verilen Puan: ${Number(ratingsData.averageScore || 0).toFixed(1)}</div></div>`;
+
+  div.innerHTML = `
+    <h4>${item.name}</h4>
+    <p>${item.address}</p>
+    ${commentsHtml}
+  `;
+
+  return div;
+}
+
+async function renderEstablishments(items) {
   const list = document.getElementById("establishmentList");
   list.innerHTML = "";
 
@@ -20,15 +53,10 @@ function renderEstablishments(items) {
     return;
   }
 
-  items.forEach(item => {
-    const div = document.createElement("div");
-    div.className = "list-item";
-    div.innerHTML = `
-      <h4>${item.name}</h4>
-      <p>${item.address}</p>
-    `;
-    list.appendChild(div);
-  });
+  for (const item of items) {
+    const card = await createEstablishmentCard(item);
+    list.appendChild(card);
+  }
 }
 
 async function getEstablishments() {
@@ -41,7 +69,7 @@ async function getEstablishments() {
       return;
     }
 
-    renderEstablishments(data);
+    await renderEstablishments(data);
     setStatus(`${data.length} mekân listelendi.`, "success");
   } catch (error) {
     setStatus(error.message, "error");

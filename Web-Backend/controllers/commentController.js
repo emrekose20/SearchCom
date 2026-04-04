@@ -79,3 +79,36 @@ exports.getMyComments = async (req, res) => {
     });
   }
 };
+
+exports.getCommentsByEstablishment = async (req, res) => {
+  try {
+    const establishment = await Establishment.findOne({
+      name: req.params.name
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Mekan bulunamadı."
+      });
+    }
+
+    const comments = await Comment.find({
+      establishmentId: establishment._id
+    })
+      .sort({ createdAt: -1 })
+      .populate("userId", "name");
+
+    const formattedComments = comments.map((comment) => ({
+      _id: comment._id,
+      content: comment.content,
+      userName: comment.userId?.name || "Kullanıcı bulunamadı"
+    }));
+
+    return res.status(200).json(formattedComments);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
+  }
+};
