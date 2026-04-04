@@ -1,12 +1,24 @@
-<h2>Yorum</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yorum</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-<input id="userId" placeholder="userId">
-<input id="establishmentId" placeholder="establishmentId">
-<input id="content" placeholder="yorum">
+<h2>Yorum İşlemleri</h2>
+
+<input id="userId" placeholder="User ID">
+<input id="establishmentId" placeholder="Mekan ID">
+<input id="content" placeholder="Yorum">
 
 <button onclick="addComment()">Yorum Ekle</button>
 
-<input id="commentId" placeholder="yorum id">
+<hr>
+
+<input id="commentId" placeholder="Yorum ID">
 <button onclick="deleteComment()">Sil</button>
 
 <script src="js/comments.js"></script>
+</body>
+</html>
