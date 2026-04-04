@@ -1,3 +1,6 @@
+## Backend Domain Adresi
+https://searchcom.onrender.com
+
 ## Sorumlu Olduğum Gereksinimler
 1. Mekana Puan Verme  
 2. Mekana Verilen Puanları Listeleme  
@@ -10,9 +13,6 @@
 
 ## Tamamladığım Gereksinim Sayısı
 8 gereksinimin 8'i tamamlandı.
-
-## Backend Domain Adresi
-https://searchcom.onrender.com
 
 ## Kullandığım Endpointler
 
