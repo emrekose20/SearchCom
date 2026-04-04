@@ -1,16 +1,27 @@
-<h2>Puan</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Puan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-<input id="userId" placeholder="userId">
-<input id="establishmentId" placeholder="establishmentId">
-<input id="score" placeholder="puan">
+<h2>Puan İşlemleri</h2>
+
+<input id="userId" placeholder="User ID">
+<input id="establishmentId" placeholder="Mekan ID">
+<input id="score" placeholder="Puan (1-5)">
 
 <button onclick="addRating()">Puan Ver</button>
-
 <button onclick="getRatings()">Listele</button>
 
-<input id="ratingId" placeholder="puan id">
+<hr>
+
+<input id="ratingId" placeholder="Puan ID">
 <button onclick="updateRating()">Güncelle</button>
 
 <pre id="result"></pre>
 
 <script src="js/ratings.js"></script>
+</body>
+</html>

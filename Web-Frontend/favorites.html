@@ -1,18 +1,32 @@
-<h2>Favori</h2>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favori</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-<input id="userId" placeholder="userId">
-<input id="establishmentId" placeholder="establishmentId">
+<h2>Favori İşlemleri</h2>
 
-<button onclick="addFavorite()">Ekle</button>
+<input id="userId" placeholder="User ID">
+<input id="establishmentId" placeholder="Mekan ID">
+
+<button onclick="addFavorite()">Favori Ekle</button>
 <button onclick="getFavorites()">Listele</button>
 
-<input id="favoriteId" placeholder="favori id">
+<hr>
+
+<input id="favoriteId" placeholder="Favori ID">
 <button onclick="deleteFavorite()">Sil</button>
 
-<input id="folderId" placeholder="folder id">
-<input id="folderName" placeholder="folder name">
+<hr>
+
+<input id="folderId" placeholder="Folder ID">
+<input id="folderName" placeholder="Folder Name">
 <button onclick="updateFolder()">Güncelle</button>
 
 <pre id="result"></pre>
 
 <script src="js/favorites.js"></script>
+</body>
+</html>
