@@ -1,30 +1,27 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const mongoose = require("mongoose");
 
-const Rating = sequelize.define("Rating", {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  establishmentId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  score: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
+const ratingSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+    establishmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Establishment",
+      required: true
+    },
+    score: {
+      type: Number,
+      required: true,
       min: 1,
       max: 5
     }
+  },
+  {
+    timestamps: true
   }
-}, {
-  tableName: "ratings"
-});
+);
 
-module.exports = Rating;
+module.exports = mongoose.model("Rating", ratingSchema);
