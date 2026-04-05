@@ -2,7 +2,7 @@
 **Rest API Domain Adresi:** https://searchcom.onrender.com
 ---
 **API Test Videosu:** asfhajsfhasjsafhhasfhajskfasf
-
+**API JSON Formatında**
 
 ---
 ### Endpoint: `POST /api/comments`
