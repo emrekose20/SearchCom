@@ -32,8 +32,6 @@ Kullanıcının bir işletme hakkında yeni bir yorum eklemesini sağlar.
 **Açıklama:**  
 Kullanıcının bir işletme hakkında yazdığı yorumu sistemden tamamen kaldırmasını sağlar.
 
-### Request Body
-
 ### 200 OK
 ```json
 {
