@@ -1,30 +1,168 @@
 ## Backend Domain Adresi
 https://searchcom.onrender.com
----
-### Endpoint: `POST /comments`
+### Endpoint: POST /api/users/register
 
-**Description:**  
-Kullanıcı yorum ekler.
+Açıklama:  
+Yeni kullanıcı hesabı oluşturur.
 
-### Request Body
-
+Request Body:
 ```json
 {
-  "userId": "69d105c4933e1304e87e4b91",
-  "establishmentId": "69d10604933e1304e87e4b92",
-  "content": "Ortalama mekan"
+  "name": "Emre Köseeeee",
+  "email": "EmreKose@test.com",
+  "password": "1234"
 }
 ```
-### 201 Created
+
+201 Created:
 ```json
 {
-    "userId": "69d105c4933e1304e87e4b91",
-    "establishmentId": "69d10604933e1304e87e4b92",
-    "content": "Ortalama mekan",
-    "_id": "69d10677933e1304e87e4b93",
-    "createdAt": "2026-04-04T12:39:19.069Z",
-    "updatedAt": "2026-04-04T12:39:19.069Z",
-    "__v": 0
+  "message": "Kayıt başarılı.",
+  "user": {
+    "_id": "USER_ID",
+    "name": "Emre Köseeeee",
+    "email": "EmreKose@test.com"
+  }
+}
+```
+
+---
+
+### Endpoint: GET /api/users/{id}
+
+Açıklama:  
+Kullanıcı bilgilerini görüntüler.
+
+200 OK:
+```json
+{
+  "_id": "USER_ID",
+  "name": "Emre Köseeeee",
+  "email": "EmreKose@test.com"
+}
+```
+
+---
+
+### Endpoint: PUT /api/users/{id}
+
+Açıklama:  
+Kullanıcının profil bilgilerini günceller.
+
+Request Body:
+```json
+{
+  "name": "Emre Köse",
+  "password": "1234Tayfun35"
+}
+```
+
+200 OK:
+```json
+{
+  "message": "Profil güncellendi.",
+  "user": {
+    "_id": "USER_ID",
+    "name": "Emre Köse",
+    "email": "EmreKose@test.com",
+    "createdAt": "2026-04-05T09:39:36.121Z",
+    "updatedAt": "2026-04-05T09:40:55.710Z"
+  }
+}
+```
+
+---
+
+### Endpoint: DELETE /api/users/{id}
+
+Açıklama:  
+Belirtilen kullanıcı hesabını siler.
+
+Request Body: Yok
+
+200 OK:
+```json
+{
+  "message": "Kullanıcı hesabı silindi."
+}
+```
+
+---
+
+### Endpoint: POST /api/establishments
+
+Açıklama:  
+Yeni bir işletme kaydı oluşturur.
+
+Request Body:
+```json
+{
+  "name": "Kafe İstanbul",
+  "address": "İstanbul Kadıköy",
+  "category": "Kafe"
+}
+```
+
+201 Created:
+```json
+{
+  "message": "İşletme oluşturuldu."
+}
+```
+
+---
+
+### Endpoint: GET /api/establishments
+
+Açıklama:  
+Tüm işletmeleri listeler.
+
+200 OK:
+```json
+[
+  {
+    "_id": "ID",
+    "name": "Kafe İstanbul",
+    "address": "İstanbul Kadıköy",
+    "category": "Kafe"
+  }
+]
+```
+
+---
+
+### Endpoint: PUT /api/establishments/{id}
+
+Açıklama:  
+İşletme bilgilerini günceller.
+
+Request Body:
+```json
+{
+  "name": "Kafe İstanbul Güncel",
+  "address": "İstanbul Moda",
+  "category": "Kafe"
+}
+```
+
+200 OK:
+```json
+{
+  "message": "İşletme güncellendi."
+}
+```
+
+---
+
+### Endpoint: DELETE /api/establishments/{id}
+
+Açıklama:  
+Belirtilen işletme kaydını siler.
+
+200 OK:
+```json
+{
+  "message": "İşletme silindi."
 }
 ```
 
