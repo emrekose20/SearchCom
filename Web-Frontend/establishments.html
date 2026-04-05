@@ -1,27 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Mekan</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mekanlar</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<h2>Mekan İşlemleri</h2>
- 
-<input id="name" placeholder="Mekan Adı">
-<input id="address" placeholder="Adres">
- 
-<button onclick="createEstablishment()">Ekle</button>
- 
-<hr>
- 
-<input id="id" placeholder="Mekan ID">
-<button onclick="getEstablishments()">Listele</button>
-<button onclick="updateEstablishment()">Güncelle</button>
-<button onclick="deleteEstablishment()">Sil</button>
- 
-<pre id="result"></pre>
- 
-<script src="js/establishments.js"></script>
+  <div class="container">
+    <div class="topbar">
+      <h2>Mekanlar</h2>
+      <a class="back-link" href="panel.html">Panele Dön</a>
+    </div>
+
+    <div class="card">
+      <h3>Kayıtlı Mekanlar</h3>
+      <p>Sistemde kayıtlı mekanları ortalama puanlarıyla birlikte görebilirsin.</p>
+
+      <div class="btn-row">
+        <button class="secondary" onclick="getEstablishments()">Mekanları Listele</button>
+      </div>
+
+      <div id="establishmentList" class="list-box"></div>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="js/establishments.js"></script>
 </body>
 </html>

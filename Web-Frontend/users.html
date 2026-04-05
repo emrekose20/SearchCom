@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Kullanıcı</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kullanıcı İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
- 
-<h2>Kullanıcı İşlemleri</h2>
- 
-<input id="name" placeholder="İsim">
-<input id="email" placeholder="Email">
-<input id="password" placeholder="Şifre">
- 
-<button onclick="registerUser()">Kayıt Ol</button>
- 
-<hr>
- 
-<input id="userId" placeholder="User ID">
-<button onclick="getUser()">Getir</button>
-<button onclick="updateUser()">Güncelle</button>
-<button onclick="deleteUser()">Sil</button>
- 
-<pre id="result"></pre>
- 
-<script src="js/users.js"></script>
+  <div class="container">
+    <div class="topbar">
+      <h2>Kayıt / Giriş</h2>
+      <a class="back-link" href="index.html">Ana Sayfaya Dön</a>
+    </div>
+
+    <div id="activeUserBox" class="user-pill hidden"></div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Giriş Yap</h3>
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="ali@test.com" />
+
+        <label>Şifre</label>
+        <input id="loginPassword" type="password" placeholder="1234" />
+
+        <div class="btn-row">
+          <button onclick="loginUser()">Giriş Yap</button>
+          <button class="secondary" onclick="logoutUser()">Çıkış Yap</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Kayıt Ol</h3>
+        <label>İsim</label>
+        <input id="registerName" placeholder="Ad Soyad" />
+
+        <label>Email</label>
+        <input id="registerEmail" type="email" placeholder="ornek@mail.com" />
+
+        <label>Şifre</label>
+        <input id="registerPassword" type="password" placeholder="1234" />
+
+        <div class="btn-row">
+          <button onclick="registerUser()">Kayıt Ol</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Profil Bilgim</h3>
+        <p>Giriş yaptıktan sonra kendi bilgilerini getir.</p>
+
+        <div class="btn-row">
+          <button class="secondary" onclick="getMyUser()">Bilgilerimi Getir</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Profil Güncelle</h3>
+        <p>Giriş yapan kullanıcı için otomatik güncellenir.</p>
+
+        <label>Yeni İsim</label>
+        <input id="updateUserName" placeholder="Yeni isim" />
+
+        <label>Yeni Şifre</label>
+        <input id="updateUserPassword" type="password" placeholder="Yeni şifre" />
+
+        <div class="btn-row">
+          <button onclick="updateUser()">Güncelle</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Hesabı Sil</h3>
+        <p>Giriş yapan kullanıcının hesabı silinir.</p>
+
+        <div class="btn-row">
+          <button class="danger" onclick="deleteUser()">Hesabımı Sil</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="js/users.js"></script>
 </body>
 </html>

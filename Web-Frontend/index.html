@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SearchCom</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1>SearchCom</h1>
+      <p>
+        SearchCom, kullanıcıların ziyaret ettikleri mekânları keşfetmelerini,
+        puanlamalarını ve deneyimlerini paylaşmalarını sağlayan modern bir yorum
+        ve değerlendirme uygulamasıdır.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge">📍 Mekân keşfet</span>
+        <span class="badge">⭐ Puanla</span>
+        <span class="badge">💬 Yorum paylaş</span>
+        <span class="badge">❤️ Favorilere ekle</span>
+      </div>
+
+      <div class="nav-grid">
+        <a class="nav-card" href="users.html">
+          <h3>Giriş Yap</h3>
+          <p>Hesabın varsa giriş yap ve panele geç.</p>
+        </a>
+
+        <a class="nav-card" href="users.html">
+          <h3>Kayıt Ol</h3>
+          <p>Yeni hesap oluştur ve ardından giriş yap.</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const user = localStorage.getItem("searchcomUser");
+    if (user) {
+      window.location.href = "panel.html";
+    }
+  </script>
+</body>
+</html>

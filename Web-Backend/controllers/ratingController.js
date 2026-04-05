@@ -1,12 +1,12 @@
-const { Rating } = require("../models");
+const { Rating, Establishment } = require("../models");
 
 exports.createRating = async (req, res) => {
   try {
-    const { userId, establishmentId, score } = req.body;
+    const { userId, establishmentName, score } = req.body;
 
-    if (!userId || !establishmentId || score === undefined) {
+    if (!userId || !establishmentName || score === undefined) {
       return res.status(400).json({
-        message: "userId, establishmentId ve score zorunludur."
+        message: "userId, establishmentName ve score zorunludur."
       });
     }
 
@@ -16,24 +16,69 @@ exports.createRating = async (req, res) => {
       });
     }
 
+    const establishment = await Establishment.findOne({
+      name: establishmentName.trim()
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Bu isimde mekan bulunamadı."
+      });
+    }
+
     const rating = await Rating.create({
       userId,
-      establishmentId,
+      establishmentId: establishment._id,
       score
     });
 
-    return res.status(201).json(rating);
+    return res.status(201).json({
+      message: "Puan oluşturuldu.",
+      rating
+    });
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
 
-exports.getRatingsByEstablishment = async (req, res) => {
+exports.getMyRatings = async (req, res) => {
   try {
-    const { id } = req.params;
+    const ratings = await Rating.find({ userId: req.params.userId })
+      .sort({ createdAt: -1 })
+      .populate("establishmentId", "name");
 
-    const ratings = await Rating.findAll({
-      where: { establishmentId: id }
+    const formattedRatings = ratings.map((rating) => ({
+      _id: rating._id,
+      score: rating.score,
+      establishmentName: rating.establishmentId?.name || "Mekan bulunamadı"
+    }));
+
+    return res.status(200).json(formattedRatings);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
+  }
+};
+
+exports.getAverageByEstablishment = async (req, res) => {
+  try {
+    const establishment = await Establishment.findOne({
+      name: req.params.name
+    });
+
+    if (!establishment) {
+      return res.status(404).json({
+        message: "Mekan bulunamadı."
+      });
+    }
+
+    const ratings = await Rating.find({
+      establishmentId: establishment._id
     });
 
     const count = ratings.length;
@@ -41,25 +86,20 @@ exports.getRatingsByEstablishment = async (req, res) => {
     const average = count > 0 ? total / count : 0;
 
     return res.status(200).json({
-      establishmentId: Number(id),
-      averageScore: average,
-      ratings
+      establishmentName: establishment.name,
+      averageScore: average
     });
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };
 
 exports.updateRating = async (req, res) => {
   try {
-    const { id } = req.params;
     const { score } = req.body;
-
-    const rating = await Rating.findByPk(id);
-
-    if (!rating) {
-      return res.status(404).json({ message: "Puan bulunamadı." });
-    }
 
     if (score === undefined || score < 1 || score > 5) {
       return res.status(400).json({
@@ -67,14 +107,26 @@ exports.updateRating = async (req, res) => {
       });
     }
 
-    rating.score = score;
-    await rating.save();
+    const rating = await Rating.findByIdAndUpdate(
+      req.params.id,
+      { score },
+      { new: true, runValidators: true }
+    );
+
+    if (!rating) {
+      return res.status(404).json({
+        message: "Puan bulunamadı."
+      });
+    }
 
     return res.status(200).json({
       message: "Puan güncellendi.",
       rating
     });
   } catch (error) {
-    return res.status(500).json({ message: "Sunucu hatası", error: error.message });
+    return res.status(500).json({
+      message: "Sunucu hatası",
+      error: error.message
+    });
   }
 };

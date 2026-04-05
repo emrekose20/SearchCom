@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favori İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h2>Favori İşlemleri</h2>
+      <a class="back-link" href="panel.html">Panele Dön</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Favoriye Ekle</h3>
+
+        <label>Mekân Adı</label>
+        <input id="favoriteEstablishmentName" placeholder="Kafe İstanbul" />
+
+        <div class="btn-row">
+          <button onclick="addFavorite()">Favoriye Ekle</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Favori Sil</h3>
+
+        <label>Favori ID</label>
+        <input id="deleteFavoriteId" placeholder="Favori id" />
+
+        <div class="btn-row">
+          <button class="danger" onclick="deleteFavorite()">Favoriden Çıkar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <h3>Favorilerim</h3>
+      <p>Kendi favori mekanlarını burada görebilirsin.</p>
+
+      <div class="btn-row" style="margin-bottom: 14px;">
+        <button class="secondary" onclick="loadMyFavorites()">Favorilerimi Listele</button>
+      </div>
+
+      <div id="myFavoritesList" class="list-box"></div>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="js/favorites.js"></script>
+</body>
+</html>

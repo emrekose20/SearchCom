@@ -1,0 +1,276 @@
+{
+  "info": {
+    "_postman_id": "43e7d63e-d1e4-4113-b5cc-d1bcb0c31514",
+    "name": "Yunus Emre Yildirim",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53573858",
+    "_collection_link": "https://go.postman.co/collection/53573858-43e7d63e-d1e4-4113-b5cc-d1bcb0c31514?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Yorum Ekle",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"69d1520e995343c229d6d819\",\n  \"establishmentName\": \"Kafe İstanbul\",\n  \"content\": \"Mekan çok güzeldi, kahvelerini beğendim.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/comments",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "comments"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Yorum Silme",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/comments/69d22d7de8d2b49b71c54d73",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "comments",
+            "69d22d7de8d2b49b71c54d73"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Puan Ver",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"userId\": \"69d1520e995343c229d6d819\",\r\n  \"establishmentName\": \"Kafe İstanbul\",\r\n  \"score\": 2\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/ratings",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ratings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Puanlarını Listele",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/ratings/user/69d1520e995343c229d6d819",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ratings",
+            "user",
+            "69d1520e995343c229d6d819"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Verilen Puanı Değiştir",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"score\": 5\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/ratings/69d22eebe8d2b49b71c54d75",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "ratings",
+            "69d22eebe8d2b49b71c54d75"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Favoriye Ekle",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"userId\": \"69d1520e995343c229d6d819\",\r\n  \"establishmentName\": \"Kafe İstanbul\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/favorites",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "favorites"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Favorileri Listele",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/favorites/69d1520e995343c229d6d819",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "favorites",
+            "69d1520e995343c229d6d819"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Favoriden Çıkar",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/favorites/69d23284e8d2b49b71c54d76",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "favorites",
+            "69d23284e8d2b49b71c54d76"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

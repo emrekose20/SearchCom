@@ -2,9 +2,9 @@
    - **API Metodu:** `POST /api/ratings`
    - **Açıklama:** Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
 
-10. **Mekan Puanlarını Listeleme**
-    - **API Metodu:** `GET /api/ratings/establishment/{id}`
-    - **Açıklama:** Belirli bir işletmeye diğer kullanıcılar tarafından verilmiş olan tüm puanları ve genel ortalamayı ekranda gösterir.
+10. **Mekanlara Verilen Puanları Listeleme**
+    - **API Metodu:** `GET /api/ratings/user/{id}`
+    - **Açıklama:** Kullanıcının hangi işletmeye ne kadar puan verdiğini gösterir
 
 11. **Verilen Puanı Değiştirme**
     - **API Metodu:** `PUT /api/ratings/{id}`
@@ -22,14 +22,10 @@
     - **API Metodu:** `GET /api/favorites/{userId}`
     - **Açıklama:** Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
 
-15. **Favori Listesi Başlığını Güncelleme**
-    - **API Metodu:** `PUT /api/favorites/folders/{id}`
-    - **Açıklama:** Kullanıcının oluşturduğu favori koleksiyonlarının ismini düzenlemesine yardımcı olur.
-
-16. **Mekanı Favorilerden Çıkarma**
+15. **Mekanı Favorilerden Çıkarma**
     - **API Metodu:** `DELETE /api/favorites/{id}`
     - **Açıklama:** Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
 
-17. **Mekana Yorum Ekleme**
+16. **Mekana Yorum Ekleme**
     - **API Metodu:** `POST /api/comments`
     - **Açıklama:** Kullanıcının bir işletme hakkında yeni bir yorum veya değerlendirme eklemesini sağlar.

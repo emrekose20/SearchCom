@@ -22,8 +22,8 @@
 
 ## Proje Linkleri
 
-- **REST API Adresi:** DOLDURULACAK.
-- **Web Frontend Adresi:** DOLDURULACAK.
+- **REST API Adresi:** [api.SearchCom.com](https://searchcom.onrender.com)
+- **Web Frontend Adresi:** [SearchCom](https://search-com.vercel.app/)
 
 ---
 
@@ -45,7 +45,7 @@ Proje dokümantasyonuna aşağıdaki linklerden erişebilirsiniz:
 1. [Gereksinim Analizi](Gereksinim-Analizi.md)
 2. [REST API Tasarımı](API-Tasarimi.md)
 3. [REST API](Rest-API.md)
-4. [Web Front-End](WebFrontEnd.md)
+4. [Web Front-End](https://github.com/emrekose20/SearchCom/blob/8e4c80b1d76d5df78f70a19de8fb2fb94fe9e199/WebFrontEnd.md)
 5. [Mobil Front-End](MobilFrontEnd.md)
 6. [Mobil Backend](MobilBackEnd.md)
 7. [Video Sunum](Sunum.md)

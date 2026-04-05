@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SearchCom</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <h1>SearchCom</h1>
+      <p>
+        Hoş geldin. Buradan yorum, puan ve favori işlemlerini kolayca yönetebilirsin.
+      </p>
+
+      <div id="activeUserBox" class="user-pill hidden"></div>
+
+      <div class="nav-grid">
+        <a class="nav-card" href="users.html">
+          <h3>Profilim</h3>
+          <p>Bilgilerini görüntüle, güncelle veya hesabını sil.</p>
+        </a>
+
+        <a class="nav-card" href="establishments.html">
+          <h3>Mekânlar</h3>
+          <p>Kayıtlı mekânları incele, yorumları ve puanları gör.</p>
+        </a>
+
+        <a class="nav-card" href="comments.html">
+          <h3>Yorum İşlemleri</h3>
+          <p>Yorum ekle ve yorumlarını yönet.</p>
+        </a>
+
+        <a class="nav-card" href="ratings.html">
+          <h3>Puan İşlemleri</h3>
+          <p>Puan ver, puanlarını gör ve güncelle.</p>
+        </a>
+
+        <a class="nav-card" href="favorites.html">
+          <h3>Favorilerim</h3>
+          <p>Favori mekanlarını ekle ve kaldır.</p>
+        </a>
+      </div>
+
+      <div class="btn-row" style="margin-top:20px;">
+        <button class="danger" onclick="logoutUser()">Çıkış Yap</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const rawUser = localStorage.getItem("searchcomUser");
+
+    if (!rawUser) {
+      window.location.href = "users.html";
+    } else {
+      const user = JSON.parse(rawUser);
+      const box = document.getElementById("activeUserBox");
+      box.className = "user-pill";
+      box.textContent = `Aktif kullanıcı: ${user.name} (${user.email})`;
+    }
+
+    function logoutUser() {
+      localStorage.removeItem("searchcomUser");
+      window.location.href = "users.html";
+    }
+  </script>
+</body>
+</html>

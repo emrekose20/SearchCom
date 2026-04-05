@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puan İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h2>Puan İşlemleri</h2>
+      <a class="back-link" href="panel.html">Panele Dön</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Puan Ver</h3>
+
+        <label>Mekân Adı</label>
+        <input id="ratingEstablishmentName" placeholder="Kafe İstanbul" />
+
+        <label>Puan</label>
+        <input id="ratingScore" type="number" min="1" max="5" placeholder="5" />
+
+        <div class="btn-row">
+          <button onclick="addRating()">Puan Gönder</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Puan Güncelle</h3>
+
+        <label>Puan ID</label>
+        <input id="updateRatingId" placeholder="Puan id" />
+
+        <label>Yeni Puan</label>
+        <input id="updateRatingScore" type="number" min="1" max="5" placeholder="3" />
+
+        <div class="btn-row">
+          <button onclick="updateRating()">Puanı Güncelle</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <h3>Puanlarım</h3>
+      <p>Verdiğin puanları burada görebilirsin.</p>
+      <div class="btn-row" style="margin-bottom: 14px;">
+        <button class="secondary" onclick="loadMyRatings()">Puanlarımı Listele</button>
+      </div>
+      <div id="myRatingsList" class="list-box"></div>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="js/ratings.js"></script>
+</body>
+</html>

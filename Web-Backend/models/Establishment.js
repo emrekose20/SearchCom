@@ -1,22 +1,21 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
- 
-const Establishment = sequelize.define("Establishment", {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+const mongoose = require("mongoose");
+
+const establishmentSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    address: {
+      type: String,
+      required: true,
+      trim: true
+    }
   },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  address: {
-    type: DataTypes.STRING,
-    allowNull: false
+  {
+    timestamps: true
   }
-}, {
-  tableName: "establishments"
-});
- 
-module.exports = Establishment;
+);
+
+module.exports = mongoose.model("Establishment", establishmentSchema);

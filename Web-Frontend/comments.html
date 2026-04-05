@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yorum İşlemleri</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <h2>Yorum İşlemleri</h2>
+      <a class="back-link" href="panel.html">Panele Dön</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Yorum Ekle</h3>
+
+        <label>Mekân Adı</label>
+        <input id="commentEstablishmentName" placeholder="Kafe İstanbul" />
+
+        <label>Yorum</label>
+        <textarea id="commentContent" placeholder="Bu mekanın kahvesi çok iyiydi."></textarea>
+
+        <div class="btn-row">
+          <button onclick="addComment()">Yorumu Gönder</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Yorum Sil</h3>
+
+        <label>Yorum ID</label>
+        <input id="deleteCommentId" placeholder="Yorum id" />
+
+        <div class="btn-row">
+          <button class="danger" onclick="deleteComment()">Yorumu Sil</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+      <h3>Yorumlarım</h3>
+      <p>Yaptığın yorumları burada görebilirsin.</p>
+      <div id="myCommentsList" class="list-box"></div>
+    </div>
+
+    <div id="status" class="status"></div>
+  </div>
+
+  <script src="js/comments.js"></script>
+</body>
+</html>

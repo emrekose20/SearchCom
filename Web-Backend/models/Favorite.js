@@ -1,26 +1,26 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+const mongoose = require("mongoose");
 
-const Favorite = sequelize.define("Favorite", {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
+const favoriteSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true
+    },
+    establishmentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Establishment",
+      required: true
+    },
+    folderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FavoriteFolder",
+      default: null
+    }
   },
-  userId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  establishmentId: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  folderId: {
-    type: DataTypes.INTEGER,
-    allowNull: true
+  {
+    timestamps: true
   }
-}, {
-  tableName: "favorites"
-});
+);
 
-module.exports = Favorite;
+module.exports = mongoose.model("Favorite", favoriteSchema);

@@ -1,8 +1,13 @@
-const { Sequelize } = require("sequelize");
+const mongoose = require("mongoose");
 
-const sequelize = new Sequelize("searchcom_db", "root", "1234", {
-  host: "localhost",
-  dialect: "mysql"
-});
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+    console.log("MongoDB bağlantısı başarılı");
+  } catch (error) {
+    console.error("MongoDB bağlantı hatası:", error.message);
+    process.exit(1);
+  }
+};
 
-module.exports = sequelize;
+module.exports = connectDB;
