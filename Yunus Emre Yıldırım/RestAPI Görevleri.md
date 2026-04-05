@@ -70,23 +70,54 @@ Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan verere
     }
 }
 ```
+### Endpoint: `GET /api/ratings/user/{id}`
+
+**Açıklama:**
+Kullanıcının işletmelere verdiği tüm puanları gösterir.
+
+### 200 OK
+```json
+[
+    {
+        "_id": "69d22eebe8d2b49b71c54d75",
+        "score": 2,
+        "establishmentName": "Kafe İstanbul"
+    }
+]
+```
+
+### Endpoint: `PUT /api/ratings/{id}`
+
+**Açıklama:**
+Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya fikrini değiştirmesine olanak tanır.
+
+### Request Body
+```json
+{
+  "score": 5
+}
+```
+### 200 OK
+```json
+{
+    "message": "Puan güncellendi.",
+    "rating": {
+        "_id": "69d22eebe8d2b49b71c54d75",
+        "userId": "69d1520e995343c229d6d819",
+        "establishmentId": "69d10604933e1304e87e4b92",
+        "score": 5,
+        "createdAt": "2026-04-05T09:44:11.116Z",
+        "updatedAt": "2026-04-05T09:55:28.603Z",
+        "__v": 0
+    }
+}
+```
 
 
 
 
 
 
-API Metodu: POST /api/ratings
-Açıklama: Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
-Mekan Puanlarını Listeleme
-
-API Metodu: GET /api/ratings/establishment/{id}
-Açıklama: Belirli bir işletmeye diğer kullanıcılar tarafından verilmiş olan tüm puanları ve genel ortalamayı ekranda gösterir.
-Verilen Puanı Değiştirme
-
-API Metodu: PUT /api/ratings/{id}
-Açıklama: Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya fikrini değiştirmesine olanak tanır.
-Mekan Yorumunu Silme
 
 
 API Metodu: POST /api/favorites
