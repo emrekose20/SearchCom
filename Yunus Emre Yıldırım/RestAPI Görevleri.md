@@ -1,5 +1,7 @@
 ## Rest API Görev Dağılımı
-https://searchcom.onrender.com
+**Rest API Domain Adresi:** https://searchcom.onrender.com
+**API Test Videosu:** 
+
 ---
 ### Endpoint: `POST /api/comments`
 
