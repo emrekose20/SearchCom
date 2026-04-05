@@ -1,6 +1,36 @@
 ## Backend Domain Adresi
 https://searchcom.onrender.com
 
+### Endpoint: `POST /comments`
+
+**Description:**  
+Kullanıcı yorum ekler.
+
+---
+
+### Request Body
+
+```json
+{
+  "userId": "69d105c4933e1304e87e4b91",
+  "establishmentId": "69d10604933e1304e87e4b92",
+  "content": "Ortalama mekan"
+}
+```
+##201 Created
+```json
+{
+    "userId": "69d105c4933e1304e87e4b91",
+    "establishmentId": "69d10604933e1304e87e4b92",
+    "content": "Ortalama mekan",
+    "_id": "69d10677933e1304e87e4b93",
+    "createdAt": "2026-04-04T12:39:19.069Z",
+    "updatedAt": "2026-04-04T12:39:19.069Z",
+    "__v": 0
+}
+
+
+
 ## Sorumlu Olduğum Gereksinimler
 1. Mekana Puan Verme  
 2. Mekana Verilen Puanları Listeleme  
