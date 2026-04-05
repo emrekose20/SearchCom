@@ -1,7 +1,7 @@
+* **API Test Videosu:**[Video linki](https://www.youtube.com/watch?v=yOiXiDTk8RI)
 ## Rest API Görev Dağılımı
 ---
 * **Rest API Domain Adresi:** https://searchcom.onrender.com
-* **API Test Videosu:**[Video linki](https://www.youtube.com/watch?v=yOiXiDTk8RI)
 * **API JSON Formatında** [Abdullah Emre Köse Postman Collection](https://github.com/emrekose20/SearchCom/blob/8fade5c7677bb12818b2afcad49f72fbabe15d29/Abdullah-Emre-K%C3%B6se.postman_collection.json)
 Açıklama:  
 Yeni kullanıcı hesabı oluşturur.
