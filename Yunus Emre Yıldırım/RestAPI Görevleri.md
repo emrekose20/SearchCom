@@ -28,6 +28,7 @@ Kullanıcı yorum ekler.
     "updatedAt": "2026-04-04T12:39:19.069Z",
     "__v": 0
 }
+```
 
 
 
