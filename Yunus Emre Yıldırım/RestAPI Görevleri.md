@@ -139,27 +139,31 @@ Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanı
     }
 }
 ```
+### Endpoint: `GET /api/favorites/{userId}`
 
+**Açıklama:**
+Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
 
+### 200 OK
+```json
+[
+    {
+        "_id": "69d23284e8d2b49b71c54d76",
+        "establishmentName": "Kafe İstanbul"
+    }
+]
+```
+### Endpoint: `/api/favorites/FAVORI_ID`
 
+**Açıklama:**
+Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
 
-
-
-API Metodu: POST /api/favorites
-Açıklama: Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanıcının kişisel favori listesine kaydedilmesini sağlar.
-Favori Listesini Görüntüleme
-
-API Metodu: GET /api/favorites/{userId}
-Açıklama: Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
-Mekanı Favorilerden Çıkarma
-
-API Metodu: DELETE /api/favorites/{id}
-Açıklama: Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
-Mekana Yorum Ekleme
-
-
-
-
+### 200 OK
+```json
+{
+    "message": "Mekan favorilerden çıkarıldı."
+}
+```
 ## Sorumlu Olduğum Gereksinimler
 1. Mekana Puan Verme  
 2. Mekana Verilen Puanları Listeleme  
@@ -181,7 +185,7 @@ Mekana Yorum Ekleme
 
 ### Puan İşlemleri
 - `POST /api/ratings`
-- `GET /api/ratings/establishment/{id}`
+- `GET /api/ratings/user/{id}`
 - `PUT /api/ratings/{id}`
 
 ### Favori İşlemleri
