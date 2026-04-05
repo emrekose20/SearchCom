@@ -153,7 +153,7 @@ Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işl
     }
 ]
 ```
-### Endpoint: `/api/favorites/FAVORI_ID`
+### Endpoint: `DELETE /api/favorites/FAVORI_ID`
 
 **Açıklama:**
 Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
