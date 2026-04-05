@@ -1,10 +1,10 @@
 ## Backend Domain Adresi
 https://searchcom.onrender.com
 ---
-### Endpoint: `POST /comments`
+### Endpoint: `POST /api/comments`
 
-**Description:**  
-Kullanıcı yorum ekler.
+**Açıklama:**  
+Kullanıcının bir işletme hakkında yeni bir yorum eklemesini sağlar.
 
 ### Request Body
 
@@ -27,6 +27,51 @@ Kullanıcı yorum ekler.
     "__v": 0
 }
 ```
+### Endpoint: `DELETE /api/comments/{id}`
+
+**Açıklama:**  
+Kullanıcının bir işletme hakkında yazdığı yorumu sistemden tamamen kaldırmasını sağlar.
+
+### Request Body
+
+### 200 OK
+```json
+{
+    "message": "Yorum başarıyla kaldırıldı."
+}
+```
+
+
+Mekana Puan Verme
+
+API Metodu: POST /api/ratings
+Açıklama: Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
+Mekan Puanlarını Listeleme
+
+API Metodu: GET /api/ratings/establishment/{id}
+Açıklama: Belirli bir işletmeye diğer kullanıcılar tarafından verilmiş olan tüm puanları ve genel ortalamayı ekranda gösterir.
+Verilen Puanı Değiştirme
+
+API Metodu: PUT /api/ratings/{id}
+Açıklama: Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya fikrini değiştirmesine olanak tanır.
+Mekan Yorumunu Silme
+
+API Metodu: DELETE /api/comments/{id}
+Açıklama: Kullanıcının bir işletme hakkında yazdığı yorumu veya yaptığı değerlendirmeyi sistemden tamamen kaldırmasını sağlar.
+Mekanı Favorilere Ekleme
+
+API Metodu: POST /api/favorites
+Açıklama: Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanıcının kişisel favori listesine kaydedilmesini sağlar.
+Favori Listesini Görüntüleme
+
+API Metodu: GET /api/favorites/{userId}
+Açıklama: Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
+Mekanı Favorilerden Çıkarma
+
+API Metodu: DELETE /api/favorites/{id}
+Açıklama: Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
+Mekana Yorum Ekleme
+
 
 
 
