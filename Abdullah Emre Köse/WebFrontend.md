@@ -6,7 +6,7 @@ https://search-com.vercel.app/
 2. Kullanıcı İşlemleri Sayfası   
 
 ## Tamamladığım Gereksinim Sayısı
-3 frontend gereksiniminin 3'ünü tamamladım.
+2 frontend gereksiniminin 2'sini tamamladım.
 
 ## Oluşturduğum Sayfalar
 - `users.html`
