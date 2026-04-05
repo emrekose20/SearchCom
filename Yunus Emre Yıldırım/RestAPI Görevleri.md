@@ -2,7 +2,7 @@
 ---
 * **Rest API Domain Adresi:** https://searchcom.onrender.com
 * **API Test Videosu:** asfhajsfhasjsafhhasfhajskfasf
-* **API JSON Formatında** [Yunus Emre Yıldırım Postman Collection indir](https://github.com/emrekose20/SearchCom/blob/0f3857e94c26786fb5c5db0aa000f16c90ca6106/Yunus%20Emre%20Yildirim.postman_collection.json)
+* **API JSON Formatında** [Yunus Emre Yıldırım Postman Collection](https://github.com/emrekose20/SearchCom/blob/0f3857e94c26786fb5c5db0aa000f16c90ca6106/Yunus%20Emre%20Yildirim.postman_collection.json)
 
 ---
 ### Endpoint: `POST /api/comments`
