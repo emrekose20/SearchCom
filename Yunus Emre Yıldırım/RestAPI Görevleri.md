@@ -1,7 +1,7 @@
 ## Rest API Görev Dağılımı
 ---
 * **Postman Test Videosu:** [Video Linki](https://www.youtube.com/watch?v=Uek5TNfRR7Y&t=32s)
-* **API JSON Formatında** [Yunus Emre Yıldırım Postman Collection](https://github.com/emrekose20/SearchCom/blob/0f3857e94c26786fb5c5db0aa000f16c90ca6106/Yunus%20Emre%20Yildirim.postman_collection.json)
+* **APi JSON Formatında** [Yunus Emre Yıldırım Postman Collection](https://github.com/emrekose20/SearchCom/blob/0f3857e94c26786fb5c5db0aa000f16c90ca6106/Yunus%20Emre%20Yildirim.postman_collection.json)
 
 ---
 ### Endpoint: `POST /api/comments`
