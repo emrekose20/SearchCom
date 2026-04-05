@@ -112,8 +112,33 @@ Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya 
     }
 }
 ```
+### Endpoint: `POST /api/favorites`
 
+**Açıklama:**
+Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanıcının kişisel favori listesine kaydedilmesini sağlar.
 
+### Request Body
+```json
+{
+  "userId": "69d1520e995343c229d6d819",
+  "establishmentName": "Kafe İstanbul"
+}
+```
+### 201 Created
+```json
+{
+    "message": "Mekan favorilere eklendi.",
+    "favorite": {
+        "userId": "69d1520e995343c229d6d819",
+        "establishmentId": "69d10604933e1304e87e4b92",
+        "folderId": null,
+        "_id": "69d23284e8d2b49b71c54d76",
+        "createdAt": "2026-04-05T09:59:32.863Z",
+        "updatedAt": "2026-04-05T09:59:32.863Z",
+        "__v": 0
+    }
+}
+```
 
 
 
