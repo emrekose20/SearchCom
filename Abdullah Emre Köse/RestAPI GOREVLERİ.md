@@ -1,7 +1,8 @@
-## Backend Domain Adresi
-https://searchcom.onrender.com
-### Endpoint: POST /api/users/register
-
+## Rest API Görev Dağılımı
+---
+* **Rest API Domain Adresi:** https://searchcom.onrender.com
+* **API Test Videosu:** asfhajsfhasjsafhhasfhajskfasf
+* **API JSON Formatında**:
 Açıklama:  
 Yeni kullanıcı hesabı oluşturur.
 
