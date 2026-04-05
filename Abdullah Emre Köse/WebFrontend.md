@@ -2,9 +2,8 @@
 https://search-com.vercel.app/
 
 ## Sorumlu Olduğum Frontend Gereksinimleri
-1. Yorum İşlemleri Sayfası  
-2. Puan İşlemleri Sayfası  
-3. Favori İşlemleri Sayfası  
+1. Mekan İşlemleri Sayfası  
+2. Kullanıcı İşlemleri Sayfası  ı  
 
 ## Tamamladığım Gereksinim Sayısı
 3 frontend gereksiniminin 3'ünü tamamladım.
