@@ -62,6 +62,60 @@ Responsive yorum işlemleri sayfası (desktop ve mobile uyumlu)
 -Responsive tasarım desteği
 -Accessibility (WCAG 2.1 AA compliance)
 
+## 2. Puan İşlemleri Sayfası
+
+API Endpoint: POST /ratings, GET /ratings/user/:userId, PUT /ratings/:id
+Görev: Kullanıcının giriş yaptıktan sonra mekan adıyla puan verebildiği, kendi verdiği puanları listeleyebildiği ve puan ID’si ile puanını güncelleyebildiği web sayfasının tasarımı ve implementasyonu.
+
+UI Bileşenleri:
+Responsive puan işlemleri sayfası (desktop ve mobile uyumlu)
+“Mekân Adı” input alanı
+“Puan” input alanı veya yıldız seçim bileşeni
+“Puan Gönder” butonu
+“Puan Güncelle” bölümü
+“Puan ID” input alanı
+“Yeni Puan” input alanı veya yıldız seçim bileşeni
+“Puanı Güncelle” butonu
+“Kendi Puanlarım” listeleme alanı
+Her puan için kart yapısı:
+
+Mekân adı
+Verilen puan
+Puan ID bilgisi
+Loading spinner
+Status / notification alanı
+Card / section layout
+
+Form Validasyonu:
+HTML5 form validation
+JavaScript real-time validation
+Mekân adı boş olamaz kontrolü
+Puan alanı boş olamaz kontrolü
+Puan sadece 1 ile 5 arasında olabilir kontrolü
+Güncelleme işlemi için puan ID boş olamaz kontrolü
+Yeni puan 1-5 aralığında olmalı kontrolü
+Client-side ve server-side validation
+API hata durumlarının kontrolü (mekan bulunamadı, puan bulunamadı vb.)
+
+Kullanıcı Deneyimi:
+Başarılı puan verme sonrası success notification
+Başarılı puan güncelleme sonrası başarı mesajı
+Puan listesi güncelleme sonrası otomatik yenilenme
+Kendi puanlarının anlaşılır şekilde listelenmesi
+Hata mesajlarının kullanıcı dostu olması
+Double-click koruması
+Accessible form labels ve ARIA attributes
+Keyboard navigation desteği
+
+Teknik Detaylar:
+Framework: React / Vue / Angular veya Vanilla JS
+Fetch API veya Axios ile veri alışverişi
+State management (puan listesi, loading, error, success state)
+Giriş yapan kullanıcı bilgisinin localStorage / sessionStorage üzerinden kullanılması
+Dinamik puan listeleme işlemleri
+Responsive tasarım
+Accessibility (WCAG 2.1 AA compliance)
+
 ## Oluşturduğum Sayfalar
 - `comments.html`
 - `ratings.html`
