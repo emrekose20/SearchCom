@@ -47,5 +47,54 @@
 ## 4. API Entegrasyonu
 
 - **Base URL Kullanımı:**
-  ```js
-  const API_BASE = "https://searchcom.onrender.com/api";
+
+## 5. State Yönetimi
+
+- **localStorage Kullanımı:**
+
+- **localStorage.setItem("searchcomUser", JSON.stringify(user));**
+- **Session Kontrolü**
+- **Sayfa Koruma (Auth Check)**
+
+---
+
+## 6. Kullanıcı Deneyimi (UX)
+- **Anlık geri bildirim (success / error mesajları)**
+- **Loading durumları**
+- **Basit ve anlaşılır UI**
+- **Hata mesajlarının kullanıcı dostu olması**
+
+---
+
+## 7. Güvenlik
+- **Kullanıcı doğrulama kontrolü**
+- **Input validation (trim, boş kontrol)**
+- **Yetkisiz erişim engelleme**
+- **API hata yönetimi**
+
+---
+
+## 8. Performans
+- **Async / Await kullanımı**
+- **Minimum DOM manipülasyonu**
+- **Gereksiz render önleme**
+- **Hafif frontend yapısı**
+
+---
+
+## 9. Responsive ve Uyumluluk
+- **Mobile uyumlu tasarım**
+- **Cross-browser support**
+- **Media queries kullanımı**
+- **Esnek grid sistemleri**
+
+---
+
+## 10. Genel Prensipler
+- **KISS (Keep It Simple)**
+- **DRY (Don't Repeat Yourself)**
+- **Modülerlik**
+- **Okunabilir kod**
+- **Maintainability (bakımı kolay kod)**
+
+---
