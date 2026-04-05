@@ -25,13 +25,13 @@ Responsive yorum işlemleri sayfası (desktop ve mobile uyumlu)
 “Kendi Yorumlarım” listeleme alanı
 **Her yorum için kart yapısı:**
 
--Mekân adı
--Yapılan yorum
--Yorum ID bilgisi
--Loading spinner (yorum ekleme, silme ve listeleme sırasında)
--Status / notification alanı
--Sayfa üst kısmında başlık ve geri dönüş butonu
--Form container (card layout)
+Mekân adı
+Yapılan yorum
+Yorum ID bilgisi
+Loading spinner (yorum ekleme, silme ve listeleme sırasında)
+Status / notification alanı
+Sayfa üst kısmında başlık ve geri dönüş butonu
+Form container (card layout)
 
 **Form Validasyonu:**
 -HTML5 form validation (required alanlar)
