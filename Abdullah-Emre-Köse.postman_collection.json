@@ -1,0 +1,222 @@
+{
+  "info": {
+    "_postman_id": "8f3e7560-8db2-4788-99c5-b01ae6facd49",
+    "name": "Abdullah-Emre-Köse",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53573842",
+    "_collection_link": "https://go.postman.co/collection/53573842-8f3e7560-8db2-4788-99c5-b01ae6facd49?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Kullanıcı hesabı açma",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "postman-echo.com/post",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    },
+    {
+      "name": "Profil bilgilerini düzenleme",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"ahmet yılmaz\"\r\n    \"password\":\"12345\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/users/69d23716e8d2b49b71c54d78",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "users",
+            "69d23716e8d2b49b71c54d78"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Kullanıcı hesabını silme",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/users/69d23716e8d2b49b71c54d78",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "users",
+            "69d23716e8d2b49b71c54d78"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "işletme kaydı oluşturma",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Tuğra Club\",\r\n    \"address\": \"Ankara\",\r\n    \"category\": \"Kafe\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/establishments",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "establishments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "İşletme listesini görüntüleme",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"Tayfun Club\"\r\n    \"adress\":\"Ispartaaa\"\r\n}"
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/establishments",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "establishments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "İşletme bilgilerini güncelleme",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"Tayfun Club\",\r\n    \"address\":\"Ispartaaa\",\r\n    \"category\":\"Club\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/establishments/69d23c04e8d2b49b71c54d7a",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "establishments",
+            "69d23c04e8d2b49b71c54d7a"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Hatalı işletme kaydı silme",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\":\"Tayfun Club\"\r\n    \"adress\":\"Ispartaaa\"\r\n}"
+        },
+        "url": {
+          "raw": "https://searchcom.onrender.com/api/establishments/69d23c04e8d2b49b71c54d7a",
+          "protocol": "https",
+          "host": [
+            "searchcom",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "api",
+            "establishments",
+            "69d23c04e8d2b49b71c54d7a"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
