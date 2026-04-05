@@ -197,12 +197,6 @@ Belirtilen işletme kaydını siler.
 * PUT /api/users/{id}
 * DELETE /api/users/{id}
   
-## Postman Collection
-DOLDURULACAK
-
-## Video Linki
-DOLDURULACAK
-
 ## Açıklama
 Backend kısmında yorum, puan, favori ve kalan ortak olan işlemlere ait REST API metotları tarafımdan geliştirilmiştir.  
 Tüm endpointler önce local ortamda test edilmiş, ardından canlı domain üzerinden Postman ile tekrar doğrulanmıştır.
