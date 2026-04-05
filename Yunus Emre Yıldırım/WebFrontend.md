@@ -1,5 +1,5 @@
 ## SearchCom Frontend Görevleri
-* Web Frontend Adresi: [SearchCom](https://search-com.vercel.app/)
+**Web Frontend Adresi:** [SearchCom](https://search-com.vercel.app/)
 
 ### Sorumlu Olduğum Frontend Gereksinimleri
 1. Yorum İşlemleri Sayfası  
