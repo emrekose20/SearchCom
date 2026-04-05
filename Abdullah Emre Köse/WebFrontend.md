@@ -3,7 +3,7 @@ https://search-com.vercel.app/
 
 ## Sorumlu Olduğum Frontend Gereksinimleri
 1. Mekan İşlemleri Sayfası  
-2. Kullanıcı İşlemleri Sayfası  ı  
+2. Kullanıcı İşlemleri Sayfası   
 
 ## Tamamladığım Gereksinim Sayısı
 3 frontend gereksiniminin 3'ünü tamamladım.
