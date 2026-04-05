@@ -1,12 +1,10 @@
 ## Backend Domain Adresi
 https://searchcom.onrender.com
-
+---
 ### Endpoint: `POST /comments`
 
 **Description:**  
 Kullanıcı yorum ekler.
-
----
 
 ### Request Body
 
