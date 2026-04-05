@@ -1,32 +1,106 @@
 ## Backend Domain Adresi
 https://searchcom.onrender.com
 ---
-### Endpoint: `POST /comments`
+### Endpoint: `POST /api/comments`
 
-**Description:**  
-Kullanıcı yorum ekler.
+**Açıklama:**  
+Kullanıcının bir işletme hakkında yeni bir yorum eklemesini sağlar.
 
 ### Request Body
 
 ```json
 {
-  "userId": "69d105c4933e1304e87e4b91",
-  "establishmentId": "69d10604933e1304e87e4b92",
-  "content": "Ortalama mekan"
+  "userId": "69d1520e995343c229d6d819",
+  "establishmentName": "Kafe İstanbul",
+  "content": "Mekan çok güzeldi, kahvelerini beğendim."
 }
 ```
 ### 201 Created
 ```json
 {
-    "userId": "69d105c4933e1304e87e4b91",
-    "establishmentId": "69d10604933e1304e87e4b92",
-    "content": "Ortalama mekan",
-    "_id": "69d10677933e1304e87e4b93",
-    "createdAt": "2026-04-04T12:39:19.069Z",
-    "updatedAt": "2026-04-04T12:39:19.069Z",
-    "__v": 0
+    "message": "Yorum oluşturuldu.",
+    "comment": {
+        "userId": "69d1520e995343c229d6d819",
+        "establishmentId": "69d10604933e1304e87e4b92",
+        "content": "Mekan çok güzeldi, kahvelerini beğendim.",
+        "_id": "69d22d7de8d2b49b71c54d73",
+        "createdAt": "2026-04-05T09:38:05.761Z",
+        "updatedAt": "2026-04-05T09:38:05.761Z",
+        "__v": 0
+    }
 }
 ```
+### Endpoint: `DELETE /api/comments/{id}`
+
+**Açıklama:**  
+Kullanıcının bir işletme hakkında yazdığı yorumu sistemden tamamen kaldırmasını sağlar.
+
+### 200 OK
+```json
+{
+    "message": "Yorum silindi."
+}
+```
+### Endpoint: `POST /api/ratings`
+
+**Açıklama:** 
+Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
+
+### Request Body
+
+```json
+{
+  "userId": "69d1520e995343c229d6d819",
+  "establishmentName": "Kafe İstanbul",
+  "score": 2
+}
+```
+### 201 Created
+```json
+{
+    "message": "Puan oluşturuldu.",
+    "rating": {
+        "userId": "69d1520e995343c229d6d819",
+        "establishmentId": "69d10604933e1304e87e4b92",
+        "score": 2,
+        "_id": "69d22eebe8d2b49b71c54d75",
+        "createdAt": "2026-04-05T09:44:11.116Z",
+        "updatedAt": "2026-04-05T09:44:11.116Z",
+        "__v": 0
+    }
+}
+```
+
+
+
+
+
+
+API Metodu: POST /api/ratings
+Açıklama: Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
+Mekan Puanlarını Listeleme
+
+API Metodu: GET /api/ratings/establishment/{id}
+Açıklama: Belirli bir işletmeye diğer kullanıcılar tarafından verilmiş olan tüm puanları ve genel ortalamayı ekranda gösterir.
+Verilen Puanı Değiştirme
+
+API Metodu: PUT /api/ratings/{id}
+Açıklama: Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya fikrini değiştirmesine olanak tanır.
+Mekan Yorumunu Silme
+
+
+API Metodu: POST /api/favorites
+Açıklama: Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanıcının kişisel favori listesine kaydedilmesini sağlar.
+Favori Listesini Görüntüleme
+
+API Metodu: GET /api/favorites/{userId}
+Açıklama: Kullanıcının kendi profilinde, daha önceden favorilerine eklediği tüm işletmeleri toplu bir liste halinde görmesini sağlar.
+Mekanı Favorilerden Çıkarma
+
+API Metodu: DELETE /api/favorites/{id}
+Açıklama: Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favori listesinden silinmesini sağlar.
+Mekana Yorum Ekleme
+
 
 
 

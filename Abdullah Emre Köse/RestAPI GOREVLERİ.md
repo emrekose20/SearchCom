@@ -31,15 +31,15 @@ Kullanıcı yorum ekler.
 
 
 ## Sorumlu Olduğum Gereksinimler
-1. Mekana Puan Verme  
-2. Mekana Verilen Puanları Listeleme  
-3. Verilen Puanı Değiştirme  
-4. Mekan Yorumunu Silme  
-5. Mekanı Favorilere Ekleme  
-6. Favori Listesini Görüntüleme   
-7. Mekanı Favorilerden Çıkarma  
-8. Mekana Yorum Ekleme
-
+1. **İşletme Kaydı Oluşturma**
+2. **İşletme Listesini Görüntüleme**
+3. **İşletme Bilgilerini Güncelleme**
+4. **Hatalı İşletme Kaydını Silme**
+5. **Kullanıcı Hesabı Açma**
+6. **Kullanıcı Bilgilerini Görüntüleme**
+7. **Profil Bilgilerini Düzenleme**
+8. **Kullanıcı Hesabını Silme**
+   
 ## Tamamladığım Gereksinim Sayısı
 8 gereksinimin 8'i tamamlandı.
 
