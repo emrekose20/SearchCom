@@ -1,15 +1,15 @@
 ## Frontend Domain Adresi
 https://search-com.vercel.app/
 
-## Sorumlu Olduğum Frontend Gereksinimleri
+### Sorumlu Olduğum Frontend Gereksinimleri
 1. Yorum İşlemleri Sayfası  
 2. Puan İşlemleri Sayfası  
 3. Favori İşlemleri Sayfası  
 
-## Tamamladığım Gereksinim Sayısı
+### Tamamladığım Gereksinim Sayısı
 3 frontend gereksiniminin 3'ünü tamamladım.
 
-### 1. Yorum İşlemleri Sayfası
+## 1. Yorum İşlemleri Sayfası
 
 **API Endpoint:** POST /comments, GET /comments/user/:userId, DELETE /comments/:id
 **Görev:** Kullanıcının giriş yaptıktan sonra mekan adıyla yorum ekleyebildiği, kendi yorumlarını listeleyebildiği ve yorum ID’si ile silebildiği web sayfasının tasarımı ve implementasyonu.
