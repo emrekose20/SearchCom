@@ -1,3 +1,3 @@
 ### Web FrontEnd Görev Dağılımı
 ---
-**Web-Frontend Adresi:** 
+**Web-Frontend Adresi:** search-com.vercel.app
