@@ -1,6 +1,6 @@
 ## SearchCom Web Frontend Görevleri
 * **Web Frontend Adresi:** [SearchCom](https://search-com.vercel.app/)
-* **Front-End Test Videosu:** [Video Linki](afsjkashfjasfk)
+* **Front-End Test Videosu:** [Video Linki](https://www.youtube.com/watch?v=romsNBMguEs)
 
 ### Sorumlu Olduğum Frontend Gereksinimleri
 1. Yorum İşlemleri Sayfası  
