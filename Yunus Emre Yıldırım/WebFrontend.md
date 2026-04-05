@@ -12,17 +12,18 @@ https://search-com.vercel.app/
 ## 1. Yorum İşlemleri Sayfası
 
 **API Endpoint:** POST /comments, GET /comments/user/:userId, DELETE /comments/:id
+
 **Görev:** Kullanıcının giriş yaptıktan sonra mekan adıyla yorum ekleyebildiği, kendi yorumlarını listeleyebildiği ve yorum ID’si ile silebildiği web sayfasının tasarımı ve implementasyonu.
 
 **UI Bileşenleri:**
-Responsive yorum işlemleri sayfası (desktop ve mobile uyumlu)
-“Mekân Adı” input alanı
-“Yorum” textarea alanı
-“Yorumu Gönder” butonu (primary button style)
-“Yorum Sil” bölümü
-“Yorum ID” input alanı
-“Yorumu Sil” butonu (danger button style)
-“Kendi Yorumlarım” listeleme alanı
+  -Responsive yorum işlemleri sayfası (desktop ve mobile uyumlu)
+  -“Mekân Adı” input alanı
+  -“Yorum” textarea alanı
+  -“Yorumu Gönder” butonu (primary button style)
+  -“Yorum Sil” bölümü
+  -“Yorum ID” input alanı
+  -“Yorumu Sil” butonu (danger button style)
+  -“Kendi Yorumlarım” listeleme alanı
 **Her yorum için kart yapısı:**
 
 Mekân adı
