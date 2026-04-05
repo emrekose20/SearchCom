@@ -1,6 +1,6 @@
 ## Frontend Domain Adresi
 * https://search-com.vercel.app/
-  
+## Video Linki  
 * [SearchCom Frontend Kontrol Videosu](https://www.youtube.com/watch?v=5w1NiRb0BuI)
   
 ## Sorumlu Olduğum Frontend Gereksinimleri
@@ -18,8 +18,5 @@
 - `users.js`
 - `establishments.js`
 
-## Video Linki
-DOLDURULACAK
-
 ## Açıklama
-Frontend kısmında yorum, puan ve favori işlemleri için kullanıcı arayüzleri hazırlanmıştır.  
+Frontend kısmında üye ve mekan işlemleri için kullanıcı arayüzleri hazırlanmıştır.  
