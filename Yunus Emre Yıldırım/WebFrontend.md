@@ -181,8 +181,5 @@
 - `ratings.js`
 - `favorites.js`
 
-## Video Linki
-DOLDURULACAK
-
 ## Açıklama
 Frontend kısmında yorum, puan ve favori işlemleri için kullanıcı arayüzleri hazırlanmıştır.  
