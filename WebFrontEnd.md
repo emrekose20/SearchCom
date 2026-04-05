@@ -48,6 +48,8 @@
 
 - **Base URL Kullanımı:**
 
+---
+
 ## 5. State Yönetimi
 
 - **localStorage Kullanımı:**
