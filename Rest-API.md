@@ -1,6 +1,7 @@
 # REST API Görev Dağılımı
 
-**REST API Adresi:** [api.SearchCom.com](https://search-com.vercel.app/)
+**REST API Domain Adresi:**
+https://searchcom.onrender.com
 
 
 ---
