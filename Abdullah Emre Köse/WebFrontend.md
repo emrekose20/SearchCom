@@ -1,5 +1,6 @@
 ## Frontend Domain Adresi
-https://search-com.vercel.app/
+* https://search-com.vercel.app/
+  
 * [SearchCom Frontend Kontrol Videosu](https://www.youtube.com/watch?v=5w1NiRb0BuI)
   
 ## Sorumlu Olduğum Frontend Gereksinimleri
