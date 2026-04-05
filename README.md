@@ -22,7 +22,7 @@
 
 ## Proje Linkleri
 
-- **REST API Adresi:** DOLDURULACAK.
+- **REST API Adresi:** [api.SearchCom.com](https://searchcom.onrender.com)
 - **Web Frontend Adresi:** DOLDURULACAK.
 
 ---
