@@ -17,7 +17,7 @@ Kullanıcı yorum ekler.
   "content": "Ortalama mekan"
 }
 ```
-##201 Created
+### 201 Created
 ```json
 {
     "userId": "69d105c4933e1304e87e4b91",
