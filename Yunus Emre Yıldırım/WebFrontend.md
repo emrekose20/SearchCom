@@ -117,6 +117,57 @@ https://search-com.vercel.app/
 * Responsive tasarım
 * Accessibility (WCAG 2.1 AA compliance)
 
+## 3. Favori İşlemleri Sayfası
+
+**API Endpoint:** POST /favorites, GET /favorites/:userId, DELETE /favorites/:id
+**Görev:** Kullanıcının giriş yaptıktan sonra mekan adı ile favori ekleyebildiği, kendi favorilerini listeleyebildiği ve favori ID’si ile favorilerden çıkarabildiği web sayfasının tasarımı ve implementasyonu.
+
+**UI Bileşenleri:**
+* Responsive favori işlemleri sayfası (desktop ve mobile uyumlu)
+* “Mekân Adı” input alanı
+* “Favoriye Ekle” butonu
+* “Favori Sil” bölümü
+* “Favori ID” input alanı
+* “Favoriden Çıkar” butonu
+* “Favorilerim” listeleme alanı
+
+**Her favori için kart yapısı:**
+* Mekân adı
+* Favori ID bilgisi
+* Loading spinner
+* Status / notification alanı
+* Card / list layout
+* Üst başlık ve geri dönüş butonu
+
+**Form Validasyonu:**
+* HTML5 form validation
+* JavaScript real-time validation
+* Mekân adı boş olamaz kontrolü
+* Favori silme işlemi için favori ID boş olamaz kontrolü
+* Aynı mekanın birden fazla kez favorilere eklenememesi kontrolü
+* Geçersiz / bulunamayan mekan adı kontrolü
+* Client-side ve server-side validation
+* API hata durumlarının yönetimi
+
+**Kullanıcı Deneyimi:**
+* Başarılı favori ekleme sonrası success notification
+* Başarılı favori silme sonrası success notification
+* Favori listesinin otomatik yenilenmesi
+* Kullanıcının yalnızca kendi favorilerini görebilmesi
+* Hata mesajlarının kullanıcı dostu olması
+* Double-click koruması
+* Accessible form labels ve ARIA attributes
+* Keyboard navigation desteği
+
+**Teknik Detaylar:**
+* Framework: React / Vue / Angular veya Vanilla JS
+* Fetch API veya Axios ile backend iletişimi
+* State management (favori listesi, loading, error state)
+* Giriş yapan kullanıcı bilgisinin localStorage / sessionStorage üzerinden alınması
+* Dinamik listeleme ve DOM güncelleme işlemleri
+* Responsive tasarım desteği
+* Accessibility (WCAG 2.1 AA compliance)
+
 ## Oluşturduğum Sayfalar
 - `comments.html`
 - `ratings.html`
