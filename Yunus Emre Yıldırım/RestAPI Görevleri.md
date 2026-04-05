@@ -1,4 +1,4 @@
-## Backend Domain Adresi
+## Rest API Görev Dağılımı
 https://searchcom.onrender.com
 ---
 ### Endpoint: `POST /api/comments`
