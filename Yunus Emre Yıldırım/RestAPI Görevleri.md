@@ -54,9 +54,6 @@ API Metodu: PUT /api/ratings/{id}
 Açıklama: Kullanıcının daha önce bir mekan için verdiği puanı güncellemesine veya fikrini değiştirmesine olanak tanır.
 Mekan Yorumunu Silme
 
-API Metodu: DELETE /api/comments/{id}
-Açıklama: Kullanıcının bir işletme hakkında yazdığı yorumu veya yaptığı değerlendirmeyi sistemden tamamen kaldırmasını sağlar.
-Mekanı Favorilere Ekleme
 
 API Metodu: POST /api/favorites
 Açıklama: Beğenilen bir işletmenin, daha sonra hızlıca ulaşılabilmesi için kullanıcının kişisel favori listesine kaydedilmesini sağlar.
