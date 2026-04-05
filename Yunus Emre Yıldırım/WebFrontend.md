@@ -1,5 +1,5 @@
-## Frontend Domain Adresi
-https://search-com.vercel.app/
+## Frontend Sayfası
+[SearchCom](https://search-com.vercel.app/)
 
 ### Sorumlu Olduğum Frontend Gereksinimleri
 1. Yorum İşlemleri Sayfası  
