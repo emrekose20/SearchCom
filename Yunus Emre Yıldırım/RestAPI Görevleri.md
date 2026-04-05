@@ -197,12 +197,6 @@ Artık tercih edilmeyen veya listeden çıkarılmak istenen bir işletmenin favo
 - `GET /api/favorites/{userId}`
 - `DELETE /api/favorites/{id}`
 
-## Postman Collection
-DOLDURULACAK
-
-## Video Linki
-DOLDURULACAK
-
 ## Açıklama
 Backend kısmında yorum, puan, favori ve kalan ortak olan işlemlere ait REST API metotları tarafımdan geliştirilmiştir.  
 Tüm endpointler önce local ortamda test edilmiş, ardından canlı domain üzerinden Postman ile tekrar doğrulanmıştır.
