@@ -198,5 +198,5 @@ Belirtilen işletme kaydını siler.
 * DELETE /api/users/{id}
   
 ## Açıklama
-Backend kısmında yorum, puan, favori ve kalan ortak olan işlemlere ait REST API metotları tarafımdan geliştirilmiştir.  
+Backend kısmında üye, mekan ve kalan ortak olan işlemlere ait REST API metotları tarafımdan geliştirilmiştir.  
 Tüm endpointler önce local ortamda test edilmiş, ardından canlı domain üzerinden Postman ile tekrar doğrulanmıştır.
