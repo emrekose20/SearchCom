@@ -180,7 +180,7 @@ Belirtilen işletme kaydını siler.
 8. **Kullanıcı Hesabını Silme**
    
 ## Tamamladığım Gereksinim Sayısı
-8 gereksinimin 8'i tamamlandı.
+8 gereksinimin 7'si tamamlandı.
 
 ## Kullandığım Endpointler
 
