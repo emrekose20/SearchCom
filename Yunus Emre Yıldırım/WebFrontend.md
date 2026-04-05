@@ -9,6 +9,59 @@ https://search-com.vercel.app/
 ## Tamamladığım Gereksinim Sayısı
 3 frontend gereksiniminin 3'ünü tamamladım.
 
+### 1. Yorum İşlemleri Sayfası
+
+**API Endpoint:** POST /comments, GET /comments/user/:userId, DELETE /comments/:id
+**Görev:** Kullanıcının giriş yaptıktan sonra mekan adıyla yorum ekleyebildiği, kendi yorumlarını listeleyebildiği ve yorum ID’si ile silebildiği web sayfasının tasarımı ve implementasyonu.
+
+**UI Bileşenleri:**
+Responsive yorum işlemleri sayfası (desktop ve mobile uyumlu)
+“Mekân Adı” input alanı
+“Yorum” textarea alanı
+“Yorumu Gönder” butonu (primary button style)
+“Yorum Sil” bölümü
+“Yorum ID” input alanı
+“Yorumu Sil” butonu (danger button style)
+“Kendi Yorumlarım” listeleme alanı
+**Her yorum için kart yapısı:**
+
+-Mekân adı
+-Yapılan yorum
+-Yorum ID bilgisi
+-Loading spinner (yorum ekleme, silme ve listeleme sırasında)
+-Status / notification alanı
+-Sayfa üst kısmında başlık ve geri dönüş butonu
+-Form container (card layout)
+
+**Form Validasyonu:**
+-HTML5 form validation (required alanlar)
+-JavaScript real-time validation
+-Mekân adı boş olamaz kontrolü
+-Yorum alanı boş olamaz kontrolü
+-Silme işlemi için yorum ID boş olamaz kontrolü
+-Geçersiz veya bulunamayan mekân adı kontrolü
+-Client-side ve server-side validation
+-API hata durumlarında doğrulama (ör. mekan bulunamadı, yorum bulunamadı)
+
+**Kullanıcı Deneyimi:**
+-Form hatalarının kullanıcıya anlaşılır şekilde gösterilmesi
+-Başarılı yorum ekleme sonrası success notification
+-Başarılı yorum silme sonrası başarı mesajı ve yorum listesinin otomatik yenilenmesi
+-Hata durumlarında kullanıcı dostu mesajlar
+-Kullanıcının yalnızca kendi yorumlarını görebilmesi
+-Form submission prevention (double-click koruması)
+-Accessible form labels ve ARIA attributes
+-Keyboard navigation desteği (Tab, Enter)
+
+**Teknik Detaylar:**
+-Framework: React / Vue / Angular veya Vanilla JS
+-Fetch API veya Axios ile backend iletişimi
+-State management (yorum listesi, loading state, error state)
+-Giriş yapan kullanıcı bilgisinin localStorage / sessionStorage üzerinden alınması
+-Dinamik liste render işlemleri
+-Responsive tasarım desteği
+-Accessibility (WCAG 2.1 AA compliance)
+
 ## Oluşturduğum Sayfalar
 - `comments.html`
 - `ratings.html`
