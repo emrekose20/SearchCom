@@ -2,7 +2,7 @@
 ---
 * **Rest API Domain Adresi:** https://searchcom.onrender.com
 * **API Test Videosu:** asfhajsfhasjsafhhasfhajskfasf
-* **API JSON Formatında** [Abdullah Emre Köse Postman Collection]([https://raw.githubusercontent.com/emrekose20/SearchCom/main/Abdullah-Emre-K%C3%B6se.postman_collection.json](https://github.com/emrekose20/SearchCom/blob/8fade5c7677bb12818b2afcad49f72fbabe15d29/Abdullah-Emre-K%C3%B6se.postman_collection.json))
+* **API JSON Formatında** [Abdullah Emre Köse Postman Collection](https://github.com/emrekose20/SearchCom/blob/8fade5c7677bb12818b2afcad49f72fbabe15d29/Abdullah-Emre-K%C3%B6se.postman_collection.json)
 Açıklama:  
 Yeni kullanıcı hesabı oluşturur.
 
