@@ -2,9 +2,9 @@
    - **API Metodu:** `POST /api/ratings`
    - **Açıklama:** Kullanıcının ziyaret ettiği bir işletmeye 1 ile 5 arasında bir puan vererek memnuniyetini belirtmesini sağlar.
 
-10. **Mekan Puanlarını Listeleme**
-    - **API Metodu:** `GET /api/ratings/establishment/{id}`
-    - **Açıklama:** Belirli bir işletmeye diğer kullanıcılar tarafından verilmiş olan tüm puanları ve genel ortalamayı ekranda gösterir.
+10. **Mekanlara Verilen Puanları Listeleme**
+    - **API Metodu:** `GET /api/ratings/user/{id}`
+    - **Açıklama:** Kullanıcının hangi işletmeye ne kadar puan verdiğini gösterir
 
 11. **Verilen Puanı Değiştirme**
     - **API Metodu:** `PUT /api/ratings/{id}`
